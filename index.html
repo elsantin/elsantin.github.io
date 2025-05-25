@@ -47,7 +47,9 @@
     </script>
     <style>
         /* Estilos básicos para el modal y fuentes (necesarios antes de que JS cargue completamente) */
-        .modal { transition: opacity 0.25s ease; }
+        .modal { transition: opacity 0.25s ease, transform 0.25s ease; } /* Añadida transición de transform */
+        .modal-content { transition: opacity 0.3s ease-out, transform 0.3s ease-out; } /* Transición para el contenido */
+
         .modal-active { display: flex; align-items: center; justify-content: center; }
         .modal-inactive { display: none; }
 
@@ -78,6 +80,40 @@
         .mobile-nav-link:hover {
             color: theme('colors.primary');
         }
+
+        /* Estilos para la animación de cambio de contenido del modal */
+        .modal-content-item {
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .modal-content-item.fade-out-left {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .modal-content-item.fade-out-right {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .modal-content-item.fade-in-left {
+            opacity: 1;
+            transform: translateX(0);
+            /* animation: fadeInFromLeft 0.3s ease-out forwards; */
+        }
+        .modal-content-item.fade-in-right {
+            opacity: 1;
+            transform: translateX(0);
+            /* animation: fadeInFromRight 0.3s ease-out forwards; */
+        }
+
+        /* Keyframes para animaciones (opcional, se puede hacer con clases y transiciones) */
+        /* @keyframes fadeInFromLeft {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInFromRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        } */
+
     </style>
 </head>
 <body class="bg-dark text-light-DEFAULT font-sans"> 
@@ -237,40 +273,38 @@
         </section>
 
         <div id="project-modal" class="modal modal-inactive fixed inset-0 bg-black bg-opacity-80 p-4 md:p-8 z-[100]">
-            <!-- 
-            <button id="modal-prev-project" aria-label="Previous project" class="modal-nav-arrow">
-                <i class="fas fa-chevron-left"></i>
+            <button id="modal-prev-project" aria-label="Previous project" class="modal-nav-arrow hidden"> <i class="fas fa-chevron-left"></i>
             </button>
-            -->
+            
             <div class="modal-content max-w-3xl w-full mx-auto rounded-lg shadow-2xl overflow-y-auto max-h-[90vh] relative p-6 md:p-8">
                 <button id="close-modal-btn" class="absolute top-4 right-4 text-light-dark hover:text-light-DEFAULT text-3xl z-30 transition-colors duration-200" aria-label="Close modal">
                     <i class="fas fa-times"></i>
                 </button>
                 
-                <img id="modal-project-image" src="https://placehold.co/600x400/161b22/c9d1d9?text=Project+Image" alt="Project Image" class="w-full h-56 md:h-72 object-cover rounded-md mb-6 shadow-lg" data-lang-key="alt_modal_project_img" data-alt-en="Project Image" data-alt-es="Imagen del Proyecto">
-                <h3 id="modal-project-title" class="text-3xl md:text-4xl font-bold mb-4 text-primary">Project Title</h3>
-                <div class="mb-6">
-                     <h4 class="text-lg font-semibold mb-2 text-light-DEFAULT" data-lang-key="modal_tech_used">Technologies Used:</h4>
-                    <p id="modal-project-technologies" class="text-light-dark leading-relaxed">Technologies list here...</p>
-                </div>
-                <div class="mb-6">
-                     <h4 class="text-lg font-semibold mb-2 text-light-DEFAULT" data-lang-key="modal_description">Description:</h4>
-                    <p id="modal-project-description" class="text-light-dark leading-relaxed">Project description here...</p>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mt-8">
-                    <a id="modal-project-live-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-primary text-white hover:opacity-80 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
-                        <i class="fas fa-external-link-alt mr-2"></i><span data-lang-key="modal_view_demo">View Demo</span>
-                    </a>
-                    <a id="modal-project-repo-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-dark-lighter text-light-DEFAULT hover:bg-gray-700 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
-                        <i class="fab fa-github mr-2"></i><span data-lang-key="modal_view_code">View Code</span>
-                    </a>
+                <div class="modal-content-item">
+                    <img id="modal-project-image" src="https://placehold.co/600x400/161b22/c9d1d9?text=Project+Image" alt="Project Image" class="w-full h-56 md:h-72 object-cover rounded-md mb-6 shadow-lg" data-lang-key="alt_modal_project_img" data-alt-en="Project Image" data-alt-es="Imagen del Proyecto">
+                    <h3 id="modal-project-title" class="text-3xl md:text-4xl font-bold mb-4 text-primary">Project Title</h3>
+                    <div class="mb-6">
+                         <h4 class="text-lg font-semibold mb-2 text-light-DEFAULT" data-lang-key="modal_tech_used">Technologies Used:</h4>
+                        <p id="modal-project-technologies" class="text-light-dark leading-relaxed">Technologies list here...</p>
+                    </div>
+                    <div class="mb-6">
+                         <h4 class="text-lg font-semibold mb-2 text-light-DEFAULT" data-lang-key="modal_description">Description:</h4>
+                        <p id="modal-project-description" class="text-light-dark leading-relaxed">Project description here...</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mt-8">
+                        <a id="modal-project-live-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-primary text-white hover:opacity-80 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
+                            <i class="fas fa-external-link-alt mr-2"></i><span data-lang-key="modal_view_demo">View Demo</span>
+                        </a>
+                        <a id="modal-project-repo-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-dark-lighter text-light-DEFAULT hover:bg-gray-700 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
+                            <i class="fab fa-github mr-2"></i><span data-lang-key="modal_view_code">View Code</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <!-- 
-            <button id="modal-next-project" aria-label="Next project" class="modal-nav-arrow">
-                <i class="fas fa-chevron-right"></i>
+            
+            <button id="modal-next-project" aria-label="Next project" class="modal-nav-arrow hidden"> <i class="fas fa-chevron-right"></i>
             </button>
-            -->
         </div>
 
         <section id="contact" class="py-16 md:py-24 bg-dark-light" data-aos="fade-up">

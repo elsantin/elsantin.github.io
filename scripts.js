@@ -2,35 +2,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. ACTUALIZAR EL AÑO EN EL FOOTER ---
-    // Selecciona el elemento donde se mostrará el año actual
     const currentYearElement = document.getElementById('current-year');
     if (currentYearElement) {
-        // Establece el texto del elemento al año actual
         currentYearElement.textContent = new Date().getFullYear();
     }
 
     // --- 2. HEADER CON EFECTO "GLASSMORPHISM" AL HACER SCROLL ---
-    // Selecciona el elemento header
     const header = document.querySelector('header');
     if (header) {
-        const scrollThreshold = 50; // Píxeles a desplazar para activar el efecto
-        // Escucha el evento de scroll en la ventana
+        const scrollThreshold = 50; 
         window.addEventListener('scroll', () => {
-            // Si el desplazamiento vertical es mayor que el umbral
             if (window.scrollY > scrollThreshold) {
-                header.classList.add('scrolled'); // Añade la clase para el efecto
+                header.classList.add('scrolled'); 
             } else {
-                header.classList.remove('scrolled'); // Remueve la clase
+                header.classList.remove('scrolled'); 
             }
         });
     }
 
     // --- 3. FUNCIONALIDAD DE CAMBIO DE IDIOMA ---
     const languageSwitcherBtn = document.getElementById('language-switcher');
-    // Obtiene el idioma guardado en localStorage o establece 'en' (inglés) por defecto
     let currentLanguage = localStorage.getItem('language') || 'en'; 
 
-    // Objeto con todas las traducciones
     const translations = {
         'en': {
             'site_title': 'elsantin dev hub',
@@ -40,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav_about': 'About',
             'nav_projects': 'Projects',
             'nav_contact': 'Contact',
-            'lang_switcher_text': 'ESP', // Texto del botón para cambiar a Español
+            'lang_switcher_text': 'ESP', 
             'alt_profile_pic': "elsantin's profile picture",
             'hero_name': 'elsantin',
             'hero_tagline': 'Vibe Coder. Self-taught code navigator, AI-assisted. This Dev Hub is the crucible of my digital explorations and the manifestation of my projects.',
@@ -64,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'project_artpf_title_card': 'AI Artistic Portfolio',
             'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
             'alt_artpf_card_img': 'Santiago Narváez Artistic Portfolio Screenshot',
-            // Añadir aquí la clave para la imagen de Veridia cuando esté disponible
-            // 'alt_veridia_card_img': 'Veridia Project Screenshot', 
             'project_view_details': 'View Details',
             'alt_modal_project_img': 'Project Image',
             'modal_tech_used': 'Technologies Used:',
@@ -85,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav_about': 'Sobre Mí',
             'nav_projects': 'Proyectos',
             'nav_contact': 'Contacto',
-            'lang_switcher_text': 'ENG', // Texto del botón para cambiar a Inglés
+            'lang_switcher_text': 'ENG', 
             'alt_profile_pic': "Foto de perfil de elsantin",
             'hero_name': 'elsantin',
             'hero_tagline': 'Vibe Coder. Navegante autodidacta del código, asistido por IA. Este Dev Hub es el crisol de mis exploraciones digitales y la manifestación de mis proyectos.',
@@ -109,8 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'project_artpf_title_card': 'Portfolio Artístico IA',
             'project_artpf_desc_card': 'Exploración visual en la intersección de la imaginación y la inteligencia artificial.',
             'alt_artpf_card_img': 'Captura de pantalla del Portfolio Artístico de Santiago Narváez',
-            // Añadir aquí la clave para la imagen de Veridia cuando esté disponible
-            // 'alt_veridia_card_img': 'Captura de pantalla del Proyecto Veridia',
             'project_view_details': 'Ver Detalles',
             'alt_modal_project_img': 'Imagen del Proyecto',
             'modal_tech_used': 'Tecnologías Utilizadas:',
@@ -122,22 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact_button_email': 'Iniciar Contacto',
             'footer_copyright': `© ${new Date().getFullYear()} elsantin. Todos los derechos reservados.`
         }
-        // Se añadirían aquí las traducciones para 'project_veridia_title', 'project_veridia_desc', etc. cuando el proyecto se integre.
     };
 
-    // Función para aplicar las traducciones a la página
     function setLanguage(lang) {
         if (!translations[lang]) {
             console.error(`Language ${lang} not found in translations.`);
             return;
         }
-        // Establece el atributo 'lang' del tag <html>
         document.documentElement.lang = lang;
-        // Itera sobre todos los elementos que tienen el atributo 'data-lang-key'
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             if (translations[lang][key]) {
-                // Casos especiales para meta tags y title
                 if (element.tagName === 'META' && element.name === 'description') {
                     element.content = translations[lang][key];
                 } else if (element.tagName === 'META' && element.name === 'keywords') {
@@ -145,36 +129,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (element.tagName === 'TITLE') {
                     element.textContent = translations[lang][key];
                 } else {
-                    // Para todos los demás elementos, establece su textContent
                     element.textContent = translations[lang][key];
                 }
             }
         });
-        // Itera sobre todas las imágenes que tienen atributos 'data-alt-en' y 'data-alt-es' para traducir el 'alt'
         document.querySelectorAll('img[data-alt-en][data-alt-es]').forEach(img => {
             const altText = img.getAttribute(lang === 'es' ? 'data-alt-es' : 'data-alt-en');
             if (altText) { img.alt = altText; }
         });
 
-        // Actualiza el texto del botón de cambio de idioma
         if (languageSwitcherBtn) {
             languageSwitcherBtn.textContent = translations[lang]['lang_switcher_text'];
         }
-        // Guarda el idioma seleccionado en localStorage
         localStorage.setItem('language', lang);
-        currentLanguage = lang; // Actualiza la variable global del idioma actual
-        // Añade una clase al body para indicar que el idioma ha sido configurado (útil para evitar FOUC con CSS)
+        currentLanguage = lang; 
         document.body.classList.add('language-set'); 
     }
 
-    // Event listener para el botón de cambio de idioma
     if (languageSwitcherBtn) {
         languageSwitcherBtn.addEventListener('click', () => {
             const newLang = currentLanguage === 'en' ? 'es' : 'en';
             setLanguage(newLang);
         });
     }
-    // Establece el idioma al cargar la página
     setLanguage(currentLanguage);
 
 
@@ -184,25 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuIcon = document.getElementById('mobile-menu-icon'); 
 
     if (mobileMenuButton && mobileMenuPanel && mobileMenuIcon) {
-        // Event listener para el botón del menú hamburguesa
         mobileMenuButton.addEventListener('click', () => {
-            // Alterna la clase 'open' en el panel del menú
             const isOpen = mobileMenuPanel.classList.toggle('open');
-            // Cambia el ícono basado en si el panel está abierto o cerrado
             if (isOpen) {
-                mobileMenuIcon.classList.remove('fa-bars'); // Quita ícono de barras
-                mobileMenuIcon.classList.add('fa-times');   // Pone ícono de 'X'
+                mobileMenuIcon.classList.remove('fa-bars'); 
+                mobileMenuIcon.classList.add('fa-times');   
             } else {
-                mobileMenuIcon.classList.remove('fa-times'); // Quita ícono de 'X'
-                mobileMenuIcon.classList.add('fa-bars');    // Pone ícono de barras
+                mobileMenuIcon.classList.remove('fa-times'); 
+                mobileMenuIcon.classList.add('fa-bars');    
             }
         });
 
-        // Cerrar el menú móvil si se hace clic en un enlace del panel
         const mobileNavLinks = mobileMenuPanel.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // Si el panel está abierto, ciérralo
                 if (mobileMenuPanel.classList.contains('open')) {
                     mobileMenuPanel.classList.remove('open');
                     mobileMenuIcon.classList.remove('fa-times');
@@ -218,147 +190,202 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('project-modal'); 
     const closeModalBtn = document.getElementById('close-modal-btn');
     
-    // Elementos dentro del modal que se actualizarán
     const modalProjectImage = document.getElementById('modal-project-image');
     const modalProjectTitle = document.getElementById('modal-project-title');
     const modalProjectTechnologies = document.getElementById('modal-project-technologies');
     const modalProjectDescription = document.getElementById('modal-project-description');
     const modalProjectLiveUrl = document.getElementById('modal-project-live-url');
     const modalProjectRepoUrl = document.getElementById('modal-project-repo-url');
+    const modalContentItem = modal.querySelector('.modal-content-item'); 
 
-    // Variables para la navegación entre proyectos (actualmente comentadas, se implementarán después)
-    // const modalPrevProjectBtn = document.getElementById('modal-prev-project');
-    // const modalNextProjectBtn = document.getElementById('modal-next-project');
-    // let allProjectCards = []; 
-    // let currentProjectIndex = -1; 
+    const modalPrevProjectBtn = document.getElementById('modal-prev-project');
+    const modalNextProjectBtn = document.getElementById('modal-next-project');
+    let allProjectCards = []; 
+    let currentProjectIndex = -1; 
 
-    // if (projectGrid) {
-    //     allProjectCards = Array.from(projectGrid.querySelectorAll('.project-card'));
-    // }
+    if (projectGrid) {
+        allProjectCards = Array.from(projectGrid.querySelectorAll('.project-card'));
+    }
 
-    // Función para actualizar el contenido del modal con la información de una tarjeta de proyecto
-    function updateModalContent(projectCard) {
-        if (!projectCard) return; // Si no hay tarjeta, no hacer nada
+    // Función para animar y actualizar el contenido del modal (VERSIÓN MEJORADA)
+    function animateAndUpdateModalContent(projectCard, direction = 'none') {
+        if (!projectCard || !modalContentItem) return;
 
-        const lang = currentLanguage; // Obtener el idioma actual para las traducciones
-        // Obtener las claves de traducción de los atributos data-* de la tarjeta
+        const animationDuration = 200; // ms, debe coincidir con la transición CSS en .modal-content-item
+
+        // Función interna para actualizar el contenido y animar la entrada
+        function performUpdateAndAnimateIn() {
+            updateModalContent(projectCard); // Actualiza el contenido del modal (textos, imagen, etc.)
+
+            // Preparar para la animación de entrada:
+            // 1. Desactivar temporalmente las transiciones CSS para establecer el estado inicial sin animar.
+            modalContentItem.style.transition = 'none'; 
+            
+            // 2. Establecer el estado inicial (invisible y desplazado).
+            if (direction === 'next') { // Nuevo contenido viene de la derecha
+                modalContentItem.style.opacity = '0';
+                modalContentItem.style.transform = 'translateX(20px)';
+            } else if (direction === 'prev') { // Nuevo contenido viene de la izquierda
+                modalContentItem.style.opacity = '0';
+                modalContentItem.style.transform = 'translateX(-20px)';
+            } else { // Carga inicial (sin slide, solo fade-in)
+                modalContentItem.style.opacity = '0';
+                modalContentItem.style.transform = 'translateX(0)';
+            }
+
+            // 3. Forzar un reflujo del navegador. Esto es crucial para que el navegador "vea" el estado inicial
+            // antes de que intentemos animar al estado final.
+            void modalContentItem.offsetWidth; 
+
+            // 4. Reactivar las transiciones CSS.
+            modalContentItem.style.transition = `opacity ${animationDuration}ms ease-in-out, transform ${animationDuration}ms ease-in-out`;
+            
+            // 5. Animar al estado final (visible y en posición).
+            modalContentItem.style.opacity = '1';
+            modalContentItem.style.transform = 'translateX(0)';
+        }
+
+        if (direction !== 'none' && modalContentItem.style.opacity === '1') { // Solo animar salida si está visible
+            // Aplicar animación de salida al contenido actual
+            if (direction === 'next') { // Contenido actual sale hacia la izquierda
+                modalContentItem.classList.add('fade-out-left');
+            } else { // Contenido actual sale hacia la derecha (direction === 'prev')
+                modalContentItem.classList.add('fade-out-right');
+            }
+
+            // Esperar a que termine la animación de salida (basado en la duración de la transición CSS)
+            setTimeout(() => {
+                modalContentItem.classList.remove('fade-out-left', 'fade-out-right'); // Limpiar clases de salida
+                performUpdateAndAnimateIn(); // Proceder a actualizar y animar la entrada
+            }, animationDuration);
+        } else {
+            // Si es carga inicial (direction === 'none') o el contenido ya estaba oculto,
+            // simplemente actualizar y animar la entrada.
+            performUpdateAndAnimateIn();
+        }
+    }
+
+
+    function updateModalContent(projectCard) { 
+        if (!projectCard) return; 
+
+        const lang = currentLanguage; 
         const titleKey = projectCard.dataset.projectTitleKey;
         const descriptionKey = projectCard.dataset.projectDescriptionKey;
         
-        // Obtener los textos traducidos o placeholders si no se encuentran
         const title = translations[lang][titleKey] || "Title not available";
         const description = translations[lang][descriptionKey] || "Description not available.";
-        // Obtener datos de la tarjeta o placeholders
-        const imageSrc = projectCard.dataset.projectImage || "https://placehold.co/600x400/161b22/c9d1d9?text=Image+Not+Available&fontsize=16";
+        const imageSrc = projectCard.dataset.projectImage || "https://placehold.co/600x400/161b22/c9d1d9?text=Project+Image&fontsize=16";
         const technologies = projectCard.dataset.projectTechnologies || "Technologies not specified.";
         const liveUrl = projectCard.dataset.projectLiveUrl || "#";
         const repoUrl = projectCard.dataset.projectRepoUrl || "#";
         
-        // Actualizar imagen y su alt text
         if (modalProjectImage) {
             modalProjectImage.src = imageSrc;
-            const cardImgElement = projectCard.querySelector('img'); // Imagen dentro de la tarjeta
-            // Usar el alt text de la tarjeta si está disponible y traducido, sino un alt genérico del modal
+            const cardImgElement = projectCard.querySelector('img'); 
             const cardAltKey = cardImgElement ? cardImgElement.dataset.langKey : null; 
             modalProjectImage.alt = (cardAltKey && translations[lang][cardAltKey]) ? translations[lang][cardAltKey] : (translations[lang]['alt_modal_project_img'] || "Project Image");
         }
-        // Actualizar título, tecnologías y descripción
         if (modalProjectTitle) modalProjectTitle.textContent = title;
         if (modalProjectTechnologies) modalProjectTechnologies.textContent = technologies; 
         if (modalProjectDescription) modalProjectDescription.textContent = description;
         
-        // Actualizar enlace "Ver Demo"
         if (modalProjectLiveUrl) {
-            const liveUrlTextElement = modalProjectLiveUrl.querySelector('span'); // El span dentro del <a>
+            const liveUrlTextElement = modalProjectLiveUrl.querySelector('span'); 
             if (liveUrlTextElement) liveUrlTextElement.textContent = translations[lang]['modal_view_demo'];
             modalProjectLiveUrl.href = liveUrl;
-            // Ocultar el botón si no hay URL válida
             modalProjectLiveUrl.style.display = liveUrl && liveUrl.trim() !== '#' && liveUrl.trim() !== '' ? 'inline-block' : 'none';
         }
-        // Actualizar enlace "Ver Código"
         if (modalProjectRepoUrl) {
-            const repoUrlTextElement = modalProjectRepoUrl.querySelector('span'); // El span dentro del <a>
+            const repoUrlTextElement = modalProjectRepoUrl.querySelector('span'); 
             if (repoUrlTextElement) repoUrlTextElement.textContent = translations[lang]['modal_view_code'];
             modalProjectRepoUrl.href = repoUrl;
-            // Ocultar el botón si no hay URL válida
             modalProjectRepoUrl.style.display = repoUrl && repoUrl.trim() !== '#' && repoUrl.trim() !== '' ? 'inline-block' : 'none';
         }
     }
 
-    // Función para abrir el modal
     function openModal(projectCard) { 
         if (!modal || !projectCard) { 
             console.error("Modal element or projectCard not found for openModal!");
             return;
         }
         
-        // currentProjectIndex = allProjectCards.indexOf(projectCard); // Comentado por ahora (para navegación)
-        updateModalContent(projectCard); // Llenar el modal con la info de la tarjeta clickeada
+        currentProjectIndex = allProjectCards.indexOf(projectCard); 
+        animateAndUpdateModalContent(projectCard, 'none'); // Carga inicial sin slide, solo fade-in
 
-        // Mostrar el modal
         modal.classList.remove('modal-inactive'); 
         modal.classList.add('modal-active');     
-        document.body.style.overflow = 'hidden'; // Evitar scroll del body detrás del modal
+        document.body.style.overflow = 'hidden'; 
 
-        // Lógica para mostrar/ocultar flechas (comentada por ahora)
-        // if (allProjectCards.length > 1) {
-        //     if (modalPrevProjectBtn) modalPrevProjectBtn.style.display = 'flex'; 
-        //     if (modalNextProjectBtn) modalNextProjectBtn.style.display = 'flex';
-        // } else {
-        //     if (modalPrevProjectBtn) modalPrevProjectBtn.style.display = 'none';
-        //     if (modalNextProjectBtn) modalNextProjectBtn.style.display = 'none';
-        // }
+        if (allProjectCards.length > 1) {
+            if (modalPrevProjectBtn) modalPrevProjectBtn.classList.remove('hidden'); 
+            if (modalNextProjectBtn) modalNextProjectBtn.classList.remove('hidden');
+        } else {
+            if (modalPrevProjectBtn) modalPrevProjectBtn.classList.add('hidden');
+            if (modalNextProjectBtn) modalNextProjectBtn.classList.add('hidden');
+        }
     }
 
-    // Función para cerrar el modal
     function closeModal() {
         if (!modal) return;
         modal.classList.remove('modal-active');
         modal.classList.add('modal-inactive');
-        document.body.style.overflow = 'auto'; // Restaurar scroll del body
+        document.body.style.overflow = 'auto'; 
     }
 
-    // Event listener para la grilla de proyectos: si se hace clic en una tarjeta, abrir el modal
     if (projectGrid) {
         projectGrid.addEventListener('click', (event) => {
-            // .closest busca el ancestro más cercano que sea una '.project-card'
             const projectCard = event.target.closest('.project-card');
             if (projectCard) {
                 openModal(projectCard);
             }
         });
     }
-    // Event listener para el botón de cerrar el modal
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
     
-    // Event listener para cerrar el modal si se hace clic fuera de su contenido (en el overlay)
     if (modal) {
         modal.addEventListener('click', (event) => { 
-            if (event.target === modal) { // Si el clic fue directamente en el overlay del modal
+            if (event.target === modal) { 
                 closeModal();
             }
         });
     }
+    
+    function navigateProject(direction) {
+        if (allProjectCards.length === 0) return; 
 
-    // Event listener para cerrar el modal con la tecla 'Escape'
-    document.addEventListener('keydown', (event) => { 
-        if (event.key === 'Escape' && modal && modal.classList.contains('modal-active')) {
-            closeModal();
+        currentProjectIndex += direction;
+        if (currentProjectIndex < 0) {
+            currentProjectIndex = allProjectCards.length - 1; 
+        } else if (currentProjectIndex >= allProjectCards.length) {
+            currentProjectIndex = 0; 
         }
-        // Navegación con flechas del teclado (comentada por ahora)
-        // if (modal && modal.classList.contains('modal-active') && allProjectCards.length > 1) {
-        //     if (event.key === 'ArrowLeft') {
-        //         navigateProject(-1);
-        //     } else if (event.key === 'ArrowRight') {
-        //         navigateProject(1);
-        //     }
-        // }
-    });
 
-    // Lógica de navegación entre proyectos con flechas (comentada por ahora, se implementará después)
-    // function navigateProject(direction) { ... }
-    // if (modalPrevProjectBtn) { modalPrevProjectBtn.addEventListener('click', () => navigateProject(-1)); }
-    // if (modalNextProjectBtn) { modalNextProjectBtn.addEventListener('click', () => navigateProject(1)); }
+        const nextProjectCard = allProjectCards[currentProjectIndex];
+        animateAndUpdateModalContent(nextProjectCard, direction === 1 ? 'next' : 'prev');
+    }
+
+    if (modalPrevProjectBtn) {
+        modalPrevProjectBtn.addEventListener('click', () => navigateProject(-1)); 
+    }
+    if (modalNextProjectBtn) {
+        modalNextProjectBtn.addEventListener('click', () => navigateProject(1)); 
+    }
+
+    document.addEventListener('keydown', (event) => { 
+        if (modal && modal.classList.contains('modal-active')) { 
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+            if (allProjectCards.length > 1) {
+                if (event.key === 'ArrowLeft') {
+                    navigateProject(-1); 
+                } else if (event.key === 'ArrowRight') {
+                    navigateProject(1);  
+                }
+            }
+        }
+    });
 
 }); // Fin del DOMContentLoaded
 /* Fin del script */
