@@ -130,6 +130,42 @@ footer.footer {
     width: 100%; 
 }
 
+/* Estilo para el tagline del Hero para mejorar legibilidad */
+.hero-tagline-text {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Sombra sutil para mejor contraste */
+}
+
+/* Estilos para el botón CTA del Hero */
+.hero-cta-button {
+    display: inline-block;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hero-cta-button:hover {
+    background-color: #8e6c40; /* Un tono de primary ligeramente más oscuro */
+    transform: scale(1.05); 
+    box-shadow: 0 0 18px rgba(163, 126, 79, 0.55), 
+                0 10px 20px -5px rgba(0, 0, 0, 0.2), 
+                0 4px 8px -3px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el botón CTA de Contacto */
+.contact-cta-button {
+    display: inline-block; /* Para que transform scale funcione */
+    /* Las clases de Tailwind ya aplican: bg-secondary, text-white, font-semibold, py-3, px-8, rounded-lg, text-lg, shadow-md */
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.3s ease-out;
+}
+
+.contact-cta-button:hover {
+    background-color: #5a626d; /* Un tono de secondary (gris) ligeramente más oscuro. Ajusta si es necesario. Tailwind gray-600 es #4b5563, gray-700 es #374151 */
+    transform: scale(1.03); /* Ligero zoom al hacer hover, un poco menos que el del hero */
+    /* Sombra más pronunciada y con un tono gris para un efecto "glow" sutil */
+    box-shadow: 0 0 15px rgba(107, 114, 128, 0.45), /* Usando el color secondary (gray-500) con opacidad */
+                0 8px 15px -5px rgba(0, 0, 0, 0.15), 
+                0 3px 7px -3px rgba(0, 0, 0, 0.1);
+}
+
+
 .project-card,
 .modal-content {
     background-color: #10131a; 
@@ -143,6 +179,7 @@ footer.footer {
     transition: transform 0.25s ease-out, box-shadow 0.35s ease-out, border-color 0.25s ease-out;
     overflow: hidden; 
     position: relative; 
+    cursor: pointer; /* Añadido para que toda la tarjeta sea clickeable */
 }
 
 .project-card::before,
