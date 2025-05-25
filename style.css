@@ -1,39 +1,48 @@
 /* style.css - elsantin dev hub */
 
+/* Variables CSS Globales (Root) */
+:root {
+    --color-primary-rgb: 163, 126, 79; /* Primario (Ámbar) en formato RGB para usar con opacidad en rgba() */
+    /* Otros colores se definen directamente en la configuración de Tailwind o aquí si es necesario */
+}
+
+/* --- ESTILOS GENERALES Y RESET BÁSICO --- */
 html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces de anclaje */
+    -webkit-font-smoothing: antialiased; /* Mejora el renderizado de fuentes en WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Mejora el renderizado de fuentes en Firefox */
 }
 
 body {
-    font-family: 'Exo 2', sans-serif;
-    background-color: #0d1117; /* Color de fondo base si la imagen no carga o mientras carga */
+    font-family: 'Exo 2', sans-serif; /* Fuente por defecto para el cuerpo del texto */
+    background-color: #0d1117; /* Color de fondo base (dark.DEFAULT de Tailwind) */
     background-image: url('site-background.jpg'); /* Imagen de fondo general del sitio */
-    background-size: cover; /* Cubrir todo el espacio disponible */
-    background-position: center center; /* Centrar la imagen */
+    background-size: cover; /* Cubrir todo el área disponible */
+    background-position: center center; /* Centrar la imagen de fondo */
     background-attachment: fixed; /* Fondo fijo al hacer scroll */
-    background-repeat: no-repeat; /* No repetir la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen de fondo */
     
-    color: #c9d1d9; /* Color de texto principal (gris claro) */
-    min-height: 100vh; /* Asegurar que el cuerpo ocupe al menos toda la altura de la ventana */
-    position: relative; /* Para el pseudo-elemento de grano */
-    overflow-x: hidden; /* Prevenir scroll horizontal accidental */
-    display: flex; /* Para el sticky footer */
-    flex-direction: column; /* Para el sticky footer */
+    color: #c9d1d9; /* Color de texto principal (light.DEFAULT de Tailwind) */
+    min-height: 100vh; /* Asegurar que el body ocupe al menos toda la altura de la pantalla */
+    position: relative; /* Necesario para el pseudo-elemento de grano */
+    overflow-x: hidden; /* Evitar scroll horizontal accidental */
+    display: flex; /* Para estructura de footer pegajoso */
+    flex-direction: column; /* Para estructura de footer pegajoso */
 }
 
-/* --- ESTILOS PARA EL HEADER Y GLASSMORPHISM --- */
+/* --- ESTILOS PARA EL HEADER Y EFECTO GLASSMORPHISM AL HACER SCROLL --- */
 header {
+    /* Transiciones suaves para cambios de estilo en el header */
     transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 header.scrolled {
-    background-color: rgba(22, 27, 34, 0.85); 
-    backdrop-filter: blur(8px); 
+    background-color: rgba(22, 27, 34, 0.85); /* Color de fondo semi-transparente (dark.light con opacidad) */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque para el glassmorphism */
+    /* box-shadow se aplica directamente con Tailwind (shadow-md) */
 }
 
-/* Ocultar elementos con data-lang-key hasta que el idioma esté configurado por JS */
+/* Ocultar elementos con data-lang-key hasta que el idioma esté configurado por JS para evitar FOUC */
 [data-lang-key] {
     visibility: hidden;
 }
@@ -41,59 +50,64 @@ body.language-set [data-lang-key] {
     visibility: visible;
 }
 
-/* Efecto de grano sutil para el fondo del body */
+/* --- EFECTO DE GRANO SUTIL PARA EL FONDO DEL BODY --- */
 body::before {
     content: "";
-    position: fixed; 
+    position: fixed; /* Cubrir toda la pantalla, independientemente del scroll */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    /* SVG en línea para generar el ruido. BaseFrequency controla la "densidad" del grano. */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/></filter><rect width="250" height="250" filter="url(%23n)" opacity="0.025"/></svg>');
-    z-index: 0; 
-    pointer-events: none; 
-    animation: grainAnimation 1s steps(2) infinite; 
+    z-index: 0; /* Detrás del contenido principal */
+    pointer-events: none; /* No interferir con clics */
+    animation: grainAnimation 1s steps(2) infinite; /* Animación sutil para el grano */
 }
 
-@keyframes grainAnimation {
+@keyframes grainAnimation { /* Animación para dar "vida" al grano */
   0%, 100% { transform: translate(0, 0); }
   25% { transform: translate(0.5px, -0.5px); }
   50% { transform: translate(-0.5px, 0.5px); }
   75% { transform: translate(0.5px, 0.5px); }
 }
 
+/* --- CONTENEDOR PRINCIPAL Y FOOTER --- */
 .content-wrapper { 
-    position: relative;
-    z-index: 1;
-    flex: 1 0 auto; 
+    position: relative; /* Para que el z-index funcione correctamente sobre el grano */
+    z-index: 1; /* Asegurar que el contenido esté sobre el grano */
+    flex: 1 0 auto; /* Para estructura de footer pegajoso (crece y no se encoge) */
 }
 footer.footer { 
     position: relative;
     z-index: 1;
-    flex-shrink: 0; 
+    flex-shrink: 0; /* Para estructura de footer pegajoso (no se encoge) */
 }
 
+/* --- ESTILO PARA TEXTO SELECCIONADO --- */
 ::selection {
-    background-color: #A37E4F; 
-    color: #FFFFFF; 
+    background-color: #A37E4F; /* Color primario (Ámbar) */
+    color: #FFFFFF; /* Texto blanco para contraste */
 }
 
+/* --- SECCIÓN HERO --- */
 #home { 
-    background-image: url('hero.jpg'); 
+    background-image: url('hero.jpg'); /* Imagen de fondo específica para la sección Hero */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    position: relative; 
+    position: relative; /* Para el pseudo-elemento de pulso y z-index del contenido */
     
-    min-height: 100vh; 
-    display: flex; 
+    min-height: 100vh; /* Ocupar al menos toda la altura de la pantalla */
+    display: flex; /* Centrar contenido vertical y horizontalmente */
     align-items: center; 
     justify-content: center; 
-    padding-top: 5rem; 
-    padding-bottom: 5rem; 
-    overflow: hidden; 
+    padding-top: 5rem; /* Espaciado superior (ajustar según altura del header) */
+    padding-bottom: 5rem; /* Espaciado inferior */
+    overflow: hidden; /* Evitar que el pulso se desborde visualmente de forma extraña */
 }
 
+/* Efecto de "energía" sutil para la sección Hero */
 #home::before {
     content: '';
     position: absolute;
@@ -102,18 +116,18 @@ footer.footer {
     width: 100%; 
     height: 100%;
     background: radial-gradient(ellipse at center, 
-        rgba(163, 126, 79, 0.1) 0%, 
-        rgba(163, 126, 79, 0.05) 40%,
+        rgba(var(--color-primary-rgb), 0.1) 0%, 
+        rgba(var(--color-primary-rgb), 0.05) 40%,
         transparent 70%
     );
-    opacity: 0; 
-    transform: translate(-50%, -50%) scale(0.8); 
-    animation: subtleEnergyPulse 12s ease-in-out infinite; 
-    z-index: 1; 
-    border-radius: 50%; 
+    opacity: 0; /* Inicia invisible */
+    transform: translate(-50%, -50%) scale(0.8); /* Centrado y escalado inicial */
+    animation: subtleEnergyPulse 12s ease-in-out infinite; /* Animación de pulso */
+    z-index: 1; /* Detrás del contenido del Hero, pero sobre el fondo de la sección */
+    border-radius: 50%; /* Forma circular */
 }
 
-@keyframes subtleEnergyPulse {
+@keyframes subtleEnergyPulse { /* Animación del pulso de energía */
     0%, 100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.8);
@@ -124,128 +138,210 @@ footer.footer {
     }
 }
 
-#home > .container { 
+#home > .container { /* Contenedor del contenido del Hero */
     position: relative;
-    z-index: 2; 
+    z-index: 2; /* Sobre el efecto de pulso */
     width: 100%; 
 }
 
-/* Estilo para el tagline del Hero para mejorar legibilidad */
-.hero-tagline-text {
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Sombra sutil para mejor contraste */
+.hero-tagline-text { /* Sombra para el tagline del Hero para mejorar legibilidad */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); 
 }
 
-/* Estilos para el botón CTA del Hero */
-.hero-cta-button {
-    display: inline-block;
+/* Estilos para botones Call to Action (Hero y Contacto) */
+.hero-cta-button, .contact-cta-button {
+    display: inline-block; /* Comportamiento de bloque pero en línea */
     transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.3s ease-out;
 }
 
 .hero-cta-button:hover {
-    background-color: #8e6c40; /* Un tono de primary ligeramente más oscuro */
-    transform: scale(1.05); 
-    box-shadow: 0 0 18px rgba(163, 126, 79, 0.55), 
+    background-color: #8e6c40; /* Color primario más oscuro al hacer hover */
+    transform: scale(1.05); /* Ligero agrandamiento */
+    /* Sombra "glow" con el color primario */
+    box-shadow: 0 0 18px rgba(var(--color-primary-rgb), 0.55), 
                 0 10px 20px -5px rgba(0, 0, 0, 0.2), 
                 0 4px 8px -3px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos para el botón CTA de Contacto */
-.contact-cta-button {
-    display: inline-block; /* Para que transform scale funcione */
-    /* Las clases de Tailwind ya aplican: bg-secondary, text-white, font-semibold, py-3, px-8, rounded-lg, text-lg, shadow-md */
-    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.3s ease-out;
-}
-
 .contact-cta-button:hover {
-    background-color: #5a626d; /* Un tono de secondary (gris) ligeramente más oscuro. Ajusta si es necesario. Tailwind gray-600 es #4b5563, gray-700 es #374151 */
-    transform: scale(1.03); /* Ligero zoom al hacer hover, un poco menos que el del hero */
-    /* Sombra más pronunciada y con un tono gris para un efecto "glow" sutil */
-    box-shadow: 0 0 15px rgba(107, 114, 128, 0.45), /* Usando el color secondary (gray-500) con opacidad */
+    background-color: #5a626d; /* Color secundario más oscuro al hacer hover */
+    transform: scale(1.03); /* Ligero agrandamiento */
+    /* Sombra "glow" con el color secundario (gris) */
+    box-shadow: 0 0 15px rgba(107, 114, 128, 0.45), 
                 0 8px 15px -5px rgba(0, 0, 0, 0.15), 
                 0 3px 7px -3px rgba(0, 0, 0, 0.1);
 }
 
-
-.project-card,
-.modal-content {
-    background-color: #10131a; 
+/* --- TARJETAS DE PROYECTO Y CONTENIDO DEL MODAL --- */
+.project-card, .modal-content {
+    background-color: #10131a; /* Color de fondo ligeramente más claro que el dark.light */
+    /* Sutiles gradientes para dar profundidad */
     background-image: 
         linear-gradient(145deg, rgba(22, 27, 34, 0.1) 15%, transparent 40%, transparent 60%, rgba(22, 27, 34, 0.1) 85%),
         linear-gradient(35deg, rgba(22, 27, 34, 0.05) 15%, transparent 40%, transparent 60%, rgba(22, 27, 34, 0.05) 85%),
         linear-gradient(to bottom right, #10131a, #161b22);
-    
-    border: 1px solid #30363d; 
-    border-radius: 12px; 
-    transition: transform 0.25s ease-out, box-shadow 0.35s ease-out, border-color 0.25s ease-out;
-    overflow: hidden; 
-    position: relative; 
-    cursor: pointer; /* Añadido para que toda la tarjeta sea clickeable */
+    border: 1px solid #30363d; /* Borde sutil (dark.lighter) */
+    border-radius: 12px; /* Bordes redondeados */
+    position: relative; /* Para el pseudo-elemento de textura y z-index */
+    overflow: hidden; /* Para que la imagen no se desborde al escalar en hover */
 }
 
+.project-card {
+    transition: transform 0.25s ease-out, box-shadow 0.35s ease-out, border-color 0.25s ease-out;
+    cursor: pointer; /* Indicar que es clickeable */
+}
+
+.modal-content { 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); /* Sombra más pronunciada para el modal */
+}
+
+/* Textura de grano sutil para tarjetas y modal */
 .project-card::before,
-.modal-content::before {
+.modal-content::before { 
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23n)" opacity="0.015"/></svg>');
     pointer-events: none; 
-    z-index: 0; 
+    z-index: 0; /* Detrás del contenido de la tarjeta/modal */
 }
 
+/* Asegurar que el contenido de la tarjeta/modal esté sobre la textura */
 .project-card > *, 
 .modal-content > * { 
     position: relative; 
     z-index: 1; 
 }
-.modal-content > #close-modal-btn {
-    z-index: 10; 
-}
 
 .project-card:hover {
-    transform: translateY(-6px); 
-    border-color: #A37E4F; 
+    transform: translateY(-6px); /* Elevar ligeramente la tarjeta */
+    border-color: #A37E4F; /* Borde con color primario */
+    /* Sombra "glow" más pronunciada con el color primario */
     box-shadow: 
-        0 0 15px rgba(163, 126, 79, 0.35), 
-        0 0 25px rgba(163, 126, 79, 0.2),  
+        0 0 15px rgba(var(--color-primary-rgb), 0.35), 
+        0 0 25px rgba(var(--color-primary-rgb), 0.2),  
         0 10px 20px rgba(0,0,0,0.25), 
         0 3px 8px rgba(0,0,0,0.2);   
 }
 
-.modal-content {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-}
-
-.project-card img {
+.project-card img { /* Transición suave para la imagen dentro de la tarjeta */
     transition: transform 0.35s ease-in-out; 
 }
-.project-card:hover img {
+.project-card:hover img { /* Escalar la imagen al hacer hover en la tarjeta */
     transform: scale(1.05); 
 }
 
+/* --- TIPOGRAFÍA PARA ENCABEZADOS (YA DEFINIDA EN TAILWIND CONFIG) --- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Rajdhani', sans-serif; /* Asegurar que se aplique si Tailwind no lo hace */
 }
 
-/* --- SEPARADORES VISUALES ENTRE SECCIONES (SOLO LÍNEA) --- */
+/* --- LÍNEAS SEPARADORAS ENTRE SECCIONES --- */
 #about-me::after,
-#projects::after {
-    content: ''; /* ESENCIAL para que el pseudo-elemento se genere */
+#projects::after { /* Usar pseudo-elemento ::after para la línea */
+    content: ''; 
     display: block; 
     position: relative; 
     width: 60%; 
     max-width: 600px; 
     height: 1px; 
-    /* Estilo de la línea del separador */
+    /* Gradiente para la línea, usando el color primario */
     background: linear-gradient(to right, 
         transparent 0%, 
-        rgba(163, 126, 79, 0.25) 20%, 
-        rgba(163, 126, 79, 0.35) 50%, 
-        rgba(163, 126, 79, 0.25) 80%,
+        rgba(var(--color-primary-rgb), 0.25) 20%, 
+        rgba(var(--color-primary-rgb), 0.35) 50%, 
+        rgba(var(--color-primary-rgb), 0.25) 80%,
         transparent 100%
     );
     margin-left: auto; 
     margin-right: auto; 
-    margin-top: 4rem; /* Espacio superior antes del separador */
+    margin-top: 4rem; /* Espacio después de la sección */
 }
 
-/* El bloque para #about-me::after::before, #projects::after::before ha sido eliminado */
+/* --- ESTILOS PARA EL PANEL DEL MENÚ MÓVIL (HAMBURGUESA) --- */
+#mobile-menu-panel {
+    max-height: 0; /* Inicia cerrado */
+    overflow: hidden; /* Ocultar contenido que se desborde */
+    /* Transiciones suaves para altura y padding */
+    transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+}
+#mobile-menu-panel.open { /* Clase 'open' añadida por JS */
+    max-height: 500px; /* Altura máxima suficiente para el contenido (ajustar si es necesario) */
+    padding-top: 1rem; /* Equivalente a py-4 de Tailwind */
+    padding-bottom: 1rem;
+}
+ .mobile-nav-link { /* Estilos para los enlaces dentro del menú móvil */
+    display: block; /* Ocupar todo el ancho disponible */
+    padding: 0.5rem; /* Equivalente a py-2 de Tailwind */
+    color: theme('colors.light.DEFAULT'); /* Color de texto principal claro */
+    transition: color 0.2s ease-in-out; /* Transición suave para el color */
+}
+.mobile-nav-link:hover {
+    color: theme('colors.primary'); /* Color primario al hacer hover */
+}
+
+
+/* --- ESTILOS PARA LAS FLECHAS DE NAVEGACIÓN DEL MODAL (SI SE IMPLEMENTAN) --- */
+/* Nota: Estos estilos están preparados pero las flechas están comentadas en el HTML por ahora */
+.modal-nav-arrow {
+    position: absolute; /* Posicionamiento absoluto respecto al modal */
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical */
+    z-index: 110; /* Sobre el contenido del modal pero debajo de un posible overlay superior */
+    
+    background-color: rgba(30, 35, 42, 0.6); /* Fondo semi-transparente */
+    border: 1px solid rgba(74, 85, 104, 0.4); /* Borde sutil */
+    border-radius: 50%; /* Forma circular */
+    width: 3rem;  /* Ancho */
+    height: 3rem; /* Alto */
+    display: flex !important; /* Forzar display flex (importante si se ocultan/muestran con JS) */
+    align-items: center; /* Centrar ícono horizontalmente */
+    justify-content: center; /* Centrar ícono verticalmente */
+    color: theme('colors.light.DEFAULT'); /* Color del ícono */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    opacity: 0.8 !important; /* Opacidad inicial (importante si se controla con JS) */
+    visibility: visible !important; /* Visibilidad inicial (importante si se controla con JS) */
+    /* Transiciones suaves para varios efectos */
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                background-color 0.2s ease-out, 
+                box-shadow 0.2s ease-out, 
+                opacity 0.2s ease-out,
+                color 0.2s ease-out;
+    cursor: pointer; /* Indicar que es clickeable */
+}
+
+#modal-prev-project {
+    left: 1rem; /* Posición base para móviles y pantallas pequeñas */
+}
+#modal-next-project {
+    right: 1rem; /* Posición base para móviles y pantallas pequeñas */
+}
+
+/* Ajustes de posición para las flechas en pantallas medianas y grandes */
+@media (min-width: 768px) { /* breakpoint 'md' de Tailwind */
+    /* Alternativa más simple para posicionar las flechas fuera del contenido del modal */
+    #modal-prev-project {
+        left: 2vw; /* 2% del ancho del viewport desde la izquierda */
+    }
+    #modal-next-project {
+        right: 2vw; /* 2% del ancho del viewport desde la derecha */
+    }
+}
+
+.modal-nav-arrow i { /* Estilo para el ícono dentro de la flecha */
+    font-size: 1.25rem; /* Tamaño del ícono (equivalente a text-xl de Tailwind) */
+    line-height: 1; /* Asegurar alineación vertical correcta */
+}
+
+.modal-nav-arrow:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.6); /* Fondo con color primario y opacidad */
+    color: theme('colors.primary'); /* Ícono con color primario */
+    opacity: 1 !important; /* Opacidad total al hacer hover */
+    transform: translateY(-50%) scale(1.15); /* Efecto de agrandamiento y rebote */
+    box-shadow: 0 6px 18px rgba(var(--color-primary-rgb), 0.4); /* Sombra "glow" con color primario */
+}
+
+.modal-nav-arrow:active { /* Estilo al hacer clic en la flecha */
+    transform: translateY(-50%) scale(1.05); /* Ligero encogimiento */
+    background-color: rgba(var(--color-primary-rgb), 0.7); /* Fondo más opaco */
+}
