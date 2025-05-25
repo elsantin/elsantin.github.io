@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
-    // --- 2. Funcionalidad del Modal de Proyectos (sin cambios en la lógica, solo en los datos de traducción) ---
+    // --- 2. Funcionalidad del Modal de Proyectos ---
     const projectGrid = document.getElementById('project-grid');
     const modal = document.getElementById('project-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageSwitcherBtn = document.getElementById('language-switcher');
     let currentLanguage = localStorage.getItem('language') || 'en'; // Inglés por defecto
 
-    // Objeto con todas las traducciones
     const translations = {
         'en': {
             'site_title': 'elsantin dev hub',
@@ -40,14 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'about_p1': 'I perceive development as a dance between intuition and logic, a creative flow where the "vibe" guides the syntax. As a self-taught individual, my learning is a constant expedition, amplified and refined by collaboration with artificial intelligences. My passion lies in translating ethereal concepts into tangible interfaces and digital experiences that resonate with a sober and original elegance.',
             'about_p2': 'Based in Margarita Island, Venezuela, I focus on strengthening my foundations in HTML, CSS, and JavaScript. Each project is a canvas to explore and apply my vision, always seeking a polished execution and a fresh perspective in web development.',
             'projects_title': 'My Projects',
-            
-            // --- Chill Chess Club ---
-            'project_ccc_title': 'Chill Chess Club', // Usado por data-project-title-key
-            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed to sell online chess courses (beginner-intermediate). It features a bilingual interface (ES/EN) and promotes an AI-assisted 'immersive and personalized' teaching method. Built with HTML5, CSS3, and JavaScript (ES6+).", // Usado por data-project-description-key (descripción larga para el modal)
-            'project_ccc_title_card': 'Chill Chess Club', // Para el título en la tarjeta
-            'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.', // Para la descripción corta en la tarjeta
+            'project_ccc_title': 'Chill Chess Club', 
+            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed to sell online chess courses (beginner-intermediate). It features a bilingual interface (ES/EN) and promotes an AI-assisted 'immersive and personalized' teaching method. Built with HTML5, CSS3, and JavaScript (ES6+).", 
+            'project_ccc_title_card': 'Chill Chess Club', 
+            'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.', 
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
-            
             'project_view_details': 'View Details',
             'alt_modal_project_img': 'Project Image',
             'modal_tech_used': 'Technologies Used:',
@@ -76,14 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'about_p1': 'Concibo el desarrollo como una danza entre la intuición y la lógica, un flujo creativo donde la "vibra" guía la sintaxis. Como autodidacta, mi aprendizaje es una expedición constante, amplificada y refinada por la colaboración con inteligencias artificiales. Mi pasión radica en traducir conceptos etéreos en interfaces tangibles y experiencias digitales que resuenen con una elegancia sobria y original.',
             'about_p2': 'Desde la Isla de Margarita, Venezuela, me enfoco en fortalecer mis cimientos en HTML, CSS y JavaScript. Cada proyecto es un lienzo para explorar y aplicar mi visión, buscando siempre una ejecución pulcra y una perspectiva fresca en el desarrollo web.',
             'projects_title': 'Mis Proyectos',
-
-            // --- Chill Chess Club (Español) ---
             'project_ccc_title': 'Chill Chess Club',
             'project_ccc_desc': "Una aplicación de página única (SPA) profesional con estética 'chill' y moderna, diseñada para vender cursos de ajedrez online (principiante-intermedio). Presenta una interfaz bilingüe (ES/EN) y promueve un método de enseñanza 'inmersivo y personalizado' asistido por IA. Construida con HTML5, CSS3 y JavaScript (ES6+).",
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA para cursos de ajedrez online con método personalizado asistido por IA.',
             'alt_ccc_card_img': 'Captura de pantalla de Chill Chess Club',
-
             'project_view_details': 'Ver Detalles',
             'alt_modal_project_img': 'Imagen del Proyecto',
             'modal_tech_used': 'Tecnologías Utilizadas:',
@@ -95,8 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact_button_email': 'Iniciar Contacto',
             'footer_copyright': `© ${new Date().getFullYear()} elsantin. Todos los derechos reservados.`
         }
-        // DEBES AÑADIR AQUÍ LAS CLAVES Y TRADUCCIONES PARA TUS OTROS PROYECTOS
-        // SIGUIENDO EL MISMO PATRÓN QUE 'project_ccc_title', 'project_ccc_desc', etc.
     };
 
     function setLanguage(lang) {
@@ -135,16 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('language', lang);
         currentLanguage = lang;
+
+        // Añadir clase al body DESPUÉS de aplicar las traducciones
+        document.body.classList.add('language-set');
     }
 
     if (languageSwitcherBtn) {
         languageSwitcherBtn.addEventListener('click', () => {
             const newLang = currentLanguage === 'en' ? 'es' : 'en';
+            // Opcional: quitar la clase para que los elementos se oculten brevemente durante el cambio
+            // document.body.classList.remove('language-set'); 
             setLanguage(newLang);
         });
     }
 
+    // Aplicar el idioma guardado o el por defecto al cargar la página
     setLanguage(currentLanguage);
+
 
     function openModal(projectCard) { 
         if (!modal || !projectCard) return;
@@ -165,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProjectImage.alt = translations[lang]['alt_modal_project_img'] || "Project Image";
         }
         if (modalProjectTitle) modalProjectTitle.textContent = title;
-        if (modalProjectTechnologies) modalProjectTechnologies.textContent = technologies; // Esto podría necesitar una clave de traducción si las tecnologías también se traducen
+        if (modalProjectTechnologies) modalProjectTechnologies.textContent = technologies; 
         if (modalProjectDescription) modalProjectDescription.textContent = description;
 
         if (modalProjectLiveUrl) {

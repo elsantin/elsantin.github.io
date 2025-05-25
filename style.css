@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    font-family: 'Exo 2', sans-serif; /* Asegurando Exo 2 para el cuerpo */
+    font-family: 'Exo 2', sans-serif;
     background-color: #0d1117; 
     background-image: url('site-background.jpg'); 
     background-size: cover; 
@@ -22,6 +22,16 @@ body {
     display: flex; 
     flex-direction: column; 
 }
+
+/* Ocultar elementos traducibles hasta que el idioma esté configurado por JS */
+[data-lang-key] {
+    visibility: hidden;
+}
+
+body.language-set [data-lang-key] {
+    visibility: visible;
+}
+
 
 body::before {
     content: "";
@@ -59,70 +69,83 @@ footer.footer {
     color: #0d1117; 
 }
 
-/* --- Sección Hero --- */
-/* ID ACTUALIZADO A #home */
 #home { 
     background-image: url('hero.jpg'); 
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative; 
-    padding-top: 6rem; 
-    padding-bottom: 6rem; 
+    
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding-top: 5rem; 
+    padding-bottom: 5rem; 
 }
 
-/* Overlay oscuro opcional para la sección Hero */
-/* ID ACTUALIZADO A #home */
-/*
-#home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(13, 17, 23, 0.5); 
-    z-index: 1; 
-}
-*/
-
-/* Contenedor del texto dentro del Hero */
-/* ID ACTUALIZADO A #home */
 #home > .container { 
     position: relative;
     z-index: 2; 
+    width: 100%; 
 }
 
-.project-card {
+.project-card,
+.modal-content {
     background-color: #161b22; 
+    background-image:
+        linear-gradient(135deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg,  rgba(22, 27, 34, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%);
+    background-size: 50px 50px; 
+    background-position: 0 0, 25px 25px, 25px 25px, 0 0; 
+
     border: 1px solid #30363d; 
-    border-radius: 8px; 
+    border-radius: 10px; 
     transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
     overflow: hidden; 
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    border-color: #8b949e; 
-    box-shadow: 0 12px 28px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.25); 
-}
-
-.project-card img {
-    transition: transform 0.3s ease-in-out;
-}
-.project-card:hover img {
-    transform: scale(1.03); 
+    transform: translateY(-5px); 
+    border-color: #58a6ff; 
+    box-shadow: 0 14px 30px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.3); 
 }
 
 .modal-content {
-    background-color: #161b22; 
-    border: 1px solid #30363d; 
-    border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
 }
 
-/* Rajdhani para encabezados (ya se aplica desde el <style> del HTML, pero se puede reforzar aquí) */
+
+.project-card img {
+    transition: transform 0.35s ease-in-out; 
+}
+.project-card:hover img {
+    transform: scale(1.05); 
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rajdhani', sans-serif; /* O theme('fontFamily.headings') */
-    /* letter-spacing: -0.01em; */ 
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* --- SEPARADORES VISUALES ENTRE SECCIONES (Eliminado para #home) --- */
+/* #home::after, Ya no aplica aquí */
+#about-me::after,
+#projects::after {
+    content: '';
+    display: block; 
+    width: 60%; 
+    max-width: 600px; 
+    height: 1px; 
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(88, 166, 255, 0.15) 20%,  
+        rgba(88, 166, 255, 0.25) 50%, 
+        rgba(88, 166, 255, 0.15) 80%,
+        transparent 100%
+    );
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 4rem; 
 }

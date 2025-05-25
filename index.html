@@ -17,16 +17,16 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#58a6ff',
-                        secondary: '#3fb950',
+                        primary: '#A37E4F',     // NUEVO: Ámbar/Bronce apagado
+                        secondary: '#6b7280',   // NUEVO: Gris medio (Tailwind gray-500)
                         dark: {
                             DEFAULT: '#0d1117',
                             light: '#161b22',
                             lighter: '#30363d',
                         },
                         light: {
-                            DEFAULT: '#c9d1d9',
-                            dark: '#8b949e',
+                            DEFAULT: '#c9d1d9',  // Texto principal (gris claro)
+                            dark: '#8b949e',     // Texto secundario
                         }
                     },
                     fontFamily: {
@@ -53,7 +53,7 @@
 
         <header class="bg-dark-light shadow-md sticky top-0 z-50">
             <nav class="container mx-auto px-6 py-3 sm:py-4 flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold text-primary hover:text-blue-400 font-headings">elsantin</a>
+                <a href="#" class="text-2xl font-bold text-primary hover:opacity-80 transition-opacity duration-200 font-headings">elsantin</a>
                 <div class="flex items-center space-x-3 sm:space-x-4">
                     <a href="#home" class="text-sm sm:text-base text-light-dark hover:text-primary transition-colors duration-200" data-lang-key="nav_home">Home</a>
                     <a href="#about-me" class="text-sm sm:text-base text-light-dark hover:text-primary transition-colors duration-200" data-lang-key="nav_about">About</a>
@@ -71,13 +71,13 @@
         <section id="home" class="text-light-DEFAULT"> 
             <div class="container mx-auto px-6 text-center">
                 <div class="mb-8 pt-12 md:pt-16">
-                    <img src="profile.jpg" alt="elsantin's profile picture" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover border-4 border-primary shadow-lg" data-lang-key="alt_profile_pic" data-alt-en="elsantin's profile picture" data-alt-es="Foto de perfil de elsantin">
+                     <img src="profile.jpg" alt="elsantin's profile picture" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover border-4 border-primary shadow-lg" data-lang-key="alt_profile_pic" data-alt-en="elsantin's profile picture" data-alt-es="Foto de perfil de elsantin">
                 </div>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4" data-lang-key="hero_name">elsantin</h1>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-light-dark" data-lang-key="hero_tagline">
                     Vibe Coder. Self-taught code navigator, AI-assisted. This Dev Hub is the crucible of my digital explorations and the manifestation of my projects.
                 </p>
-                <a href="#projects" class="bg-primary text-dark-DEFAULT hover:bg-blue-400 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg" data-lang-key="hero_button_projects">
+                 <a href="#projects" class="bg-primary text-white hover:opacity-80 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg" data-lang-key="hero_button_projects">
                     Explore Projects
                 </a>
             </div>
@@ -94,10 +94,10 @@
                         Based in Margarita Island, Venezuela, I focus on strengthening my foundations in <strong class="text-light-DEFAULT">HTML, CSS, and JavaScript</strong>. Each project is a canvas to explore and apply my vision, always seeking a polished execution and a fresh perspective in web development.
                     </p>
                     <div class="flex justify-center md:justify-start space-x-6">
-                        <a href="https://github.com/elsantin" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-400 text-3xl transition-colors duration-200" aria-label="GitHub">
+                        <a href="https://github.com/elsantin" target="_blank" rel="noopener noreferrer" class="text-primary hover:opacity-80 text-3xl transition-opacity duration-200" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-400 text-3xl transition-colors duration-200" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="text-primary hover:opacity-80 text-3xl transition-opacity duration-200" aria-label="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -111,11 +111,13 @@
                 <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="project-card"
                          data-project-title-key="project_ccc_title"
-                         data-project-image="chill-chess-club-layout.jpg" data-project-description-key="project_ccc_desc"
+                         data-project-image="chill-chess-club-layout.jpg" 
+                         data-project-description-key="project_ccc_desc"
                          data-project-technologies="HTML, CSS, JavaScript" 
                          data-project-live-url="https://elsantin.github.io/chill-chess-club/"
                          data-project-repo-url="https://github.com/elsantin/chill-chess-club">
-                        <img src="chill-chess-club-layout.jpg" alt="Chill Chess Club" class="w-full h-48 object-cover" data-lang-key="alt_ccc_card_img" data-alt-en="Chill Chess Club" data-alt-es="Chill Chess Club"> <div class="p-6">
+                        <img src="chill-chess-club-layout.jpg" alt="Chill Chess Club" class="w-full h-48 object-cover" data-lang-key="alt_ccc_card_img" data-alt-en="Chill Chess Club" data-alt-es="Chill Chess Club">
+                        <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2 text-light-DEFAULT" data-lang-key="project_ccc_title_card">Chill Chess Club</h3>
                             <p class="text-sm text-light-dark mb-3 truncate h-10" data-lang-key="project_ccc_desc_card">A web application to play chess in a relaxed atmosphere.</p>
                             <div class="flex justify-between items-center mt-4">
@@ -128,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
 
@@ -138,7 +140,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <img id="modal-project-image" src="" alt="Project Image" class="w-full h-56 md:h-72 object-cover rounded-md mb-6 shadow-lg" data-lang-key="alt_modal_project_img" data-alt-en="Project Image" data-alt-es="Imagen del Proyecto">
-                <h3 id="modal-project-title" class="text-3xl md:text-4xl font-bold mb-4 text-primary"></h3>
+                 <h3 id="modal-project-title" class="text-3xl md:text-4xl font-bold mb-4 text-primary"></h3>
                 <div class="mb-6">
                      <h4 class="text-lg font-semibold mb-2 text-light-DEFAULT" data-lang-key="modal_tech_used">Technologies Used:</h4>
                     <p id="modal-project-technologies" class="text-light-dark leading-relaxed"></p>
@@ -148,7 +150,7 @@
                     <p id="modal-project-description" class="text-light-dark leading-relaxed"></p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mt-8">
-                    <a id="modal-project-live-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-primary text-dark-DEFAULT hover:bg-blue-400 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
+                     <a id="modal-project-live-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-primary text-white hover:opacity-80 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
                         <i class="fas fa-external-link-alt mr-2"></i><span data-lang-key="modal_view_demo">View Demo</span>
                     </a>
                     <a id="modal-project-repo-url" href="#" target="_blank" rel="noopener noreferrer" class="bg-dark-lighter text-light-DEFAULT hover:bg-gray-700 font-semibold py-3 px-6 rounded-lg text-center transition duration-300 shadow-md hover:shadow-lg inline-block">
@@ -164,14 +166,14 @@
                 <p class="mb-8 max-w-lg mx-auto text-light-dark" data-lang-key="contact_tagline">
                     If my approach resonates with you, or if you have a vision we could materialize together, this is the starting point.
                 </p>
-                <a href="mailto:santiago.narvaez.84@gmail.com" class="bg-secondary text-white hover:bg-green-400 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg" data-lang-key="contact_button_email">
+                 <a href="mailto:santiago.narvaez.84@gmail.com" class="bg-secondary text-white hover:bg-gray-500 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md hover:shadow-lg" data-lang-key="contact_button_email">
                     Send Email
                 </a>
                 <div class="mt-10 flex justify-center space-x-6">
-                    <a href="https://github.com/elsantin" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-400 text-4xl transition-colors duration-200" aria-label="GitHub">
+                    <a href="https://github.com/elsantin" target="_blank" rel="noopener noreferrer" class="text-primary hover:opacity-80 text-4xl transition-opacity duration-200" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-blue-400 text-4xl transition-colors duration-200" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="text-primary hover:opacity-80 text-4xl transition-opacity duration-200" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
