@@ -6,7 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
-    // --- 2. Funcionalidad del Modal de Proyectos ---
+    // --- NUEVA FUNCIÓN PARA EL HEADER SCROLLED (Glassmorphism) ---
+    const header = document.querySelector('header'); 
+    if (header) {
+        const scrollThreshold = 50; // Píxeles a scrollear antes de que cambie el header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+    // --- FIN NUEVA FUNCIÓN ---
+
+    // --- Funcionalidad del Modal de Proyectos ---
     const projectGrid = document.getElementById('project-grid');
     const modal = document.getElementById('project-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -17,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectLiveUrl = document.getElementById('modal-project-live-url');
     const modalProjectRepoUrl = document.getElementById('modal-project-repo-url');
 
-    // --- 3. Funcionalidad de Cambio de Idioma ---
+    // --- Funcionalidad de Cambio de Idioma ---
     const languageSwitcherBtn = document.getElementById('language-switcher');
     let currentLanguage = localStorage.getItem('language') || 'en'; // Inglés por defecto
 
@@ -39,11 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
             'about_p1': 'I perceive development as a dance between intuition and logic, a creative flow where the "vibe" guides the syntax. As a self-taught individual, my learning is a constant expedition, amplified and refined by collaboration with artificial intelligences. My passion lies in translating ethereal concepts into tangible interfaces and digital experiences that resonate with a sober and original elegance.',
             'about_p2': 'Based in Margarita Island, Venezuela, I focus on strengthening my foundations in HTML, CSS, and JavaScript. Each project is a canvas to explore and apply my vision, always seeking a polished execution and a fresh perspective in web development.',
             'projects_title': 'My Projects',
-            'project_ccc_title': 'Chill Chess Club', 
-            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed to sell online chess courses (beginner-intermediate). It features a bilingual interface (ES/EN) and promotes an AI-assisted 'immersive and personalized' teaching method. Built with HTML5, CSS3, and JavaScript (ES6+).", 
-            'project_ccc_title_card': 'Chill Chess Club', 
-            'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.', 
+            'project_ccc_title': 'Chill Chess Club',
+            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed to sell online chess courses (beginner-intermediate). It features a bilingual interface (ES/EN) and promotes an AI-assisted 'immersive and personalized' teaching method. Built with HTML5, CSS3, and JavaScript (ES6+).",
+            'project_ccc_title_card': 'Chill Chess Club',
+            'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.',
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
+            'project_dho_title': 'Dra. Hanoi Yánez González - Professional Website & SPA',
+            'project_dho_desc': "Development of a single-page application (SPA) for Dr. Hanoi Yánez, a Gynecologist-Obstetrician specializing in child and adolescent care. The project showcases her comprehensive services, holistic approach, and her role as the sole specialist in child-adolescent care on Margarita Island. The design is clean, modern, and aims to convey professionalism and warmth, facilitating interaction and appointment scheduling.",
+            'project_dho_title_card': 'Dra. Hanoi Online',
+            'project_dho_desc_card': 'Professional website for Gynecologist-Obstetrician with a holistic approach on Margarita Island.',
+            'alt_dho_card_img': 'Dra. Hanoi Online Website Screenshot',
+            'project_artpf_title': 'Santiago Narváez - Digital Art & AI Photography Portfolio',
+            'project_artpf_desc': "A personal portfolio showcasing my work as a photographer and visual creator, exploring the frontiers of AI-assisted creation. The site blends traditional artistic sensibilities with cutting-edge technology to transform moments into impactful visual experiences, creating dreamlike landscapes, surreal portraits, and futuristic visions in the liminal space between the real and the imagined. It invites a journey through these digital realms, reflecting our evolving relationship with technology and the expanding horizons of artistic expression.",
+            'project_artpf_title_card': 'AI Artistic Portfolio',
+            'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
+            'alt_artpf_card_img': 'Santiago Narváez Artistic Portfolio Screenshot',
             'project_view_details': 'View Details',
             'alt_modal_project_img': 'Project Image',
             'modal_tech_used': 'Technologies Used:',
@@ -77,6 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA para cursos de ajedrez online con método personalizado asistido por IA.',
             'alt_ccc_card_img': 'Captura de pantalla de Chill Chess Club',
+            'project_dho_title': 'Dra. Hanoi Yánez González - Sitio Web Profesional y SPA',
+            'project_dho_desc': "Desarrollo de un sitio web de página única (SPA) para la Dra. Hanoi Yánez, Ginecóloga-Obstetra con especialización infanto-juvenil. El proyecto presenta sus servicios integrales, un enfoque holístico y su rol como única especialista en atención infanto-juvenil en la Isla de Margarita. El diseño es limpio, moderno y busca transmitir profesionalismo y calidez, facilitando la interacción y el agendamiento de citas.",
+            'project_dho_title_card': 'Dra. Hanoi Online',
+            'project_dho_desc_card': 'Sitio web profesional para ginecóloga-obstetra con enfoque holístico en Isla de Margarita.',
+            'alt_dho_card_img': 'Captura de pantalla del sitio Dra. Hanoi Online',
+            'project_artpf_title': 'Santiago Narváez - Portfolio de Arte Digital y Fotografía IA',
+            'project_artpf_desc': "Un portafolio personal que muestra mi trabajo como fotógrafo y creador visual, explorando las fronteras de la creación asistida por IA. El sitio combina sensibilidades artísticas tradicionales con tecnología de vanguardia para transformar momentos en experiencias visuales impactantes, creando paisajes oníricos, retratos surrealistas y visiones futuristas en el espacio liminal entre lo real y lo imaginado. Invita a un viaje por estos reinos digitales, reflejando nuestra relación evolutiva con la tecnología y los horizontes en expansión de la expresión artística.",
+            'project_artpf_title_card': 'Portfolio Artístico IA',
+            'project_artpf_desc_card': 'Exploración visual en la intersección de la imaginación y la inteligencia artificial.',
+            'alt_artpf_card_img': 'Captura de pantalla del Portfolio Artístico de Santiago Narváez',
             'project_view_details': 'Ver Detalles',
             'alt_modal_project_img': 'Imagen del Proyecto',
             'modal_tech_used': 'Tecnologías Utilizadas:',
@@ -95,9 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(`Language ${lang} not found in translations.`);
             return;
         }
-
         document.documentElement.lang = lang;
-
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             if (translations[lang][key]) {
@@ -112,45 +144,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-
         document.querySelectorAll('img[data-alt-en][data-alt-es]').forEach(img => {
             const altText = img.getAttribute(lang === 'es' ? 'data-alt-es' : 'data-alt-en');
-            if (altText) {
-                img.alt = altText;
-            }
+            if (altText) { img.alt = altText; }
         });
-
         if (languageSwitcherBtn) {
             languageSwitcherBtn.textContent = translations[lang]['lang_switcher_text'];
         }
-
         localStorage.setItem('language', lang);
         currentLanguage = lang;
-
-        // Añadir clase al body DESPUÉS de aplicar las traducciones
         document.body.classList.add('language-set');
     }
 
     if (languageSwitcherBtn) {
         languageSwitcherBtn.addEventListener('click', () => {
             const newLang = currentLanguage === 'en' ? 'es' : 'en';
-            // Opcional: quitar la clase para que los elementos se oculten brevemente durante el cambio
-            // document.body.classList.remove('language-set'); 
             setLanguage(newLang);
         });
     }
-
-    // Aplicar el idioma guardado o el por defecto al cargar la página
     setLanguage(currentLanguage);
-
 
     function openModal(projectCard) { 
         if (!modal || !projectCard) return;
-
         const lang = currentLanguage; 
         const titleKey = projectCard.dataset.projectTitleKey;
         const descriptionKey = projectCard.dataset.projectDescriptionKey;
-
         const title = translations[lang][titleKey] || "Title not available";
         const description = translations[lang][descriptionKey] || "Description not available.";
         const image = projectCard.dataset.projectImage || "https://placehold.co/600x400/161b22/c9d1d9?text=Image+Not+Available";
@@ -160,12 +178,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (modalProjectImage) {
             modalProjectImage.src = image;
-            modalProjectImage.alt = translations[lang]['alt_modal_project_img'] || "Project Image";
+            const cardImgElement = projectCard.querySelector('img');
+            const cardAltKey = cardImgElement ? cardImgElement.dataset.langKey : null; 
+            modalProjectImage.alt = (cardAltKey && translations[lang][cardAltKey]) ? translations[lang][cardAltKey] : (translations[lang]['alt_modal_project_img'] || "Project Image");
         }
         if (modalProjectTitle) modalProjectTitle.textContent = title;
         if (modalProjectTechnologies) modalProjectTechnologies.textContent = technologies; 
         if (modalProjectDescription) modalProjectDescription.textContent = description;
-
         if (modalProjectLiveUrl) {
             const liveUrlTextElement = modalProjectLiveUrl.querySelector('span');
             if (liveUrlTextElement) liveUrlTextElement.textContent = translations[lang]['modal_view_demo'];
@@ -178,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProjectRepoUrl.href = repoUrl;
             modalProjectRepoUrl.style.display = repoUrl && repoUrl.trim() !== '#' ? 'inline-block' : 'none';
         }
-
         modal.classList.remove('modal-inactive');
         modal.classList.add('modal-active');
         document.body.style.overflow = 'hidden';
@@ -194,14 +212,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (projectGrid) {
         projectGrid.addEventListener('click', (event) => {
             const projectCard = event.target.closest('.project-card');
-            if (projectCard) {
-                openModal(projectCard); 
-            }
+            if (projectCard) { openModal(projectCard); }
         });
     }
-
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
     if (modal) modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal && modal.classList.contains('modal-active')) closeModal(); });
-
 });
+/* End of script */

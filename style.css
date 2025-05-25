@@ -23,15 +23,27 @@ body {
     flex-direction: column; 
 }
 
-/* Ocultar elementos traducibles hasta que el idioma esté configurado por JS */
+/* --- ESTILOS PARA EL HEADER Y GLASSMORPHISM --- */
+header {
+    /* Clases de Tailwind en HTML: bg-dark-light shadow-md sticky top-0 z-50 */
+    /* El color de fondo inicial (#161b22) lo da bg-dark-light */
+    transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+header.scrolled {
+    background-color: rgba(22, 27, 34, 0.85); /* dark.light (#161b22) con 85% opacidad */
+    backdrop-filter: blur(8px); /* Efecto de desenfoque del fondo */
+    /* La sombra 'shadow-md' de Tailwind se mantiene, o puedes definir una específica aquí si prefieres */
+}
+/* --- FIN ESTILOS HEADER --- */
+
+
 [data-lang-key] {
     visibility: hidden;
 }
-
 body.language-set [data-lang-key] {
     visibility: visible;
 }
-
 
 body::before {
     content: "";
@@ -65,8 +77,8 @@ footer.footer {
 }
 
 ::selection {
-    background-color: #58a6ff; 
-    color: #0d1117; 
+    background-color: #A37E4F; 
+    color: #FFFFFF; 
 }
 
 #home { 
@@ -82,6 +94,37 @@ footer.footer {
     justify-content: center; 
     padding-top: 5rem; 
     padding-bottom: 5rem; 
+    overflow: hidden; 
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%; 
+    height: 100%;
+    background: radial-gradient(ellipse at center, 
+        rgba(163, 126, 79, 0.1) 0%, 
+        rgba(163, 126, 79, 0.05) 40%,
+        transparent 70%
+    );
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.8); 
+    animation: subtleEnergyPulse 12s ease-in-out infinite; 
+    z-index: 1; 
+    border-radius: 50%; 
+}
+
+@keyframes subtleEnergyPulse {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    50% {
+        opacity: 0.3; 
+        transform: translate(-50%, -50%) scale(1.2); 
+    }
 }
 
 #home > .container { 
@@ -92,31 +135,47 @@ footer.footer {
 
 .project-card,
 .modal-content {
-    background-color: #161b22; 
-    background-image:
-        linear-gradient(135deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%),
-        linear-gradient(45deg,  rgba(22, 27, 34, 0.05) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(22, 27, 34, 0.05) 25%, transparent 25%);
-    background-size: 50px 50px; 
-    background-position: 0 0, 25px 25px, 25px 25px, 0 0; 
-
+    background-color: #10131a; 
+    background-image: 
+        linear-gradient(145deg, rgba(22, 27, 34, 0.1) 15%, transparent 40%, transparent 60%, rgba(22, 27, 34, 0.1) 85%),
+        linear-gradient(35deg, rgba(22, 27, 34, 0.05) 15%, transparent 40%, transparent 60%, rgba(22, 27, 34, 0.05) 85%),
+        linear-gradient(to bottom right, #10131a, #161b22);
+    
     border: 1px solid #30363d; 
-    border-radius: 10px; 
+    border-radius: 12px; 
     transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
     overflow: hidden; 
+    position: relative; 
+}
+
+.project-card::before,
+.modal-content::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23n)" opacity="0.015"/></svg>');
+    pointer-events: none; 
+    z-index: 0; 
+}
+
+.project-card > *, 
+.modal-content > * { 
+    position: relative; 
+    z-index: 1; 
+}
+.modal-content > #close-modal-btn {
+    z-index: 10; 
 }
 
 .project-card:hover {
-    transform: translateY(-5px); 
-    border-color: #58a6ff; 
-    box-shadow: 0 14px 30px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.3); 
+    transform: translateY(-6px); 
+    border-color: #A37E4F; 
+    box-shadow: 0 16px 35px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.35); 
 }
 
 .modal-content {
     box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
 }
-
 
 .project-card img {
     transition: transform 0.35s ease-in-out; 
@@ -129,8 +188,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Rajdhani', sans-serif;
 }
 
-/* --- SEPARADORES VISUALES ENTRE SECCIONES (Eliminado para #home) --- */
-/* #home::after, Ya no aplica aquí */
 #about-me::after,
 #projects::after {
     content: '';
@@ -140,9 +197,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 1px; 
     background: linear-gradient(to right, 
         transparent 0%, 
-        rgba(88, 166, 255, 0.15) 20%,  
-        rgba(88, 166, 255, 0.25) 50%, 
-        rgba(88, 166, 255, 0.15) 80%,
+        rgba(163, 126, 79, 0.25) 20%,  
+        rgba(163, 126, 79, 0.35) 50%, 
+        rgba(163, 126, 79, 0.25) 80%,
         transparent 100%
     );
     margin-left: auto; 
