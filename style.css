@@ -134,10 +134,7 @@ footer.footer { position: relative; z-index: 1; flex-shrink: 0; }
 }
 
 /* === ICONOS DE TECNOLOGÍA (Aplicable a Tarjetas y Modal) === */
-.project-card-tech-icons, 
-#modal-tech-icons-outside-image { 
-    /* El contenedor usa clases de Tailwind para flex, justify-end, items-center, space-x */
-}
+/* El contenedor usa clases de Tailwind para flex, justify-end, items-center, space-x */
 
 .project-card-tech-icons i,
 .project-card-tech-icons img.tech-icon-img,
