@@ -44,26 +44,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'projects_title': 'My Projects',
             
             'project_ccc_title': 'Chill Chess Club',
-            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed for selling online chess courses. It features a bilingual (ES/EN) interface, promotes an AI-assisted immersive teaching method, and includes a form for inquiries and course registration. Built with HTML5, CSS3, and JavaScript (ES6+).",
+            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed for selling online chess courses. It features a bilingual (ES/EN) interface, promotes an AI-assisted immersive teaching method, and includes a form for inquiries and course registration. Built with HTML5, CSS3, and JavaScript (ES6+).", // Modelo, no se acorta
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.',
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
             
             'project_dho_title': 'Dra. Hanoi Yánez González - Professional Website & SPA',
-            'project_dho_desc': "A professional single-page application (SPA) for Dr. Hanoi Yánez, designed to present her medical services in detail and facilitate patient interaction. The website features a clean and modern aesthetic that conveys professionalism and warmth, with a fully responsive design. Key functionalities include an integrated contact form for inquiries and direct communication via WhatsApp for appointment scheduling. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.",
+            'project_dho_desc': "Professional SPA for Dr. Hanoi Yánez, designed to present medical services and facilitate patient interaction. Features a clean, modern aesthetic conveying professionalism, with a responsive design. Includes a contact form for inquiries and direct WhatsApp communication for appointments. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.", // Versión 4
             'project_dho_title_card': 'Dra. Hanoi Online',
             'project_dho_desc_card': 'Professional website for Dr. Hanoi, showcasing services and facilitating appointments.',
             'alt_dho_card_img': 'Dra. Hanoi Online Website Screenshot',
             
             'project_artpf_title': 'Santiago Narváez - Digital Art & AI Photography Portfolio',
-            'project_artpf_desc': "A professional personal web portfolio for Santiago Narváez, showcasing his photography and AI-assisted visual creations. The site features an aesthetic that blends traditional art with cutting-edge technology, offering an immersive gallery. It offers a bilingual (ES/EN) interface, includes interactive elements developed with p5.js, and a contact form for inquiries or collaboration proposals. Built with HTML, Tailwind CSS, JavaScript, and p5.js.",
+            'project_artpf_desc': "Personal web portfolio for Santiago Narváez, showcasing photography and AI-assisted visual art. Blends traditional art with modern tech in an immersive gallery. Features a bilingual (ES/EN) interface, interactive p5.js elements, and a contact form for inquiries. Built with HTML, Tailwind CSS, JavaScript, and p5.js.", // Versión 4
             'project_artpf_title_card': 'AI Artistic Portfolio',
             'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
             'alt_artpf_card_img': 'Santiago Narváez Artistic Portfolio Screenshot',
 
             'project_veridia_title': 'Veridia Website', 
             'project_veridia_desc_card': "Official SPA for Veridia, showcasing intelligent automation solutions and modern web design...",
-            'project_veridia_desc': "A professional official single-page application (SPA) for Veridia, an intelligent automation solutions company. The website has a modern and clean aesthetic, strategically designed to showcase its specialized services, detail its work methodology, and facilitate lead generation through an optimized contact form. It features a responsive design, an intuitive bilingual (ES/EN) interface, dynamic content loading, and subtle animations. Built with HTML, Tailwind CSS, and JavaScript.", 
+            'project_veridia_desc': "Official SPA for Veridia, an intelligent automation company. Features a modern, clean aesthetic showcasing services, methodology, and a lead-gen contact form. Includes responsive design, bilingual (ES/EN) interface, dynamic content, and subtle animations. Built with HTML, Tailwind CSS, and JavaScript.", // Versión 4
             'alt_veridia_card_img': 'Screenshot of the Veridia project homepage, showcasing intelligent automation solutions.',
             
             'project_view_details': 'View Details',
@@ -96,26 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'projects_title': 'Mis Proyectos',
 
             'project_ccc_title': 'Chill Chess Club',
-            'project_ccc_desc': "Una aplicación de página única (SPA) profesional con estética 'chill' y moderna, diseñada para la venta de cursos de ajedrez online. Presenta una interfaz bilingüe (ES/EN), promueve un método de enseñanza inmersivo asistido por IA y cuenta con un formulario para consultas e inscripción a los cursos. Construida con HTML5, CSS3 y JavaScript (ES6+).",
+            'project_ccc_desc': "Una aplicación de página única (SPA) profesional con estética 'chill' y moderna, diseñada para la venta de cursos de ajedrez online. Presenta una interfaz bilingüe (ES/EN), promueve un método de enseñanza inmersivo asistido por IA y cuenta con un formulario para consultas e inscripción a los cursos. Construida con HTML5, CSS3 y JavaScript (ES6+).", // Modelo, no se acorta
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA para cursos de ajedrez online con método personalizado asistido por IA.',
             'alt_ccc_card_img': 'Captura de pantalla de Chill Chess Club',
             
             'project_dho_title': 'Dra. Hanoi Yánez González - Sitio Web Profesional y SPA',
-            'project_dho_desc': "Aplicación de página única (SPA) profesional para la Dra. Hanoi Yánez, diseñada para presentar detalladamente sus servicios médicos y facilitar la interacción con pacientes. El sitio web proyecta una estética limpia y moderna que transmite profesionalismo y calidez, con un diseño completamente responsivo. Entre sus funcionalidades destacan un formulario de contacto integrado para consultas y la opción de comunicación directa vía WhatsApp para agendar citas. Construido con HTML5, CSS3 (Tailwind CSS) y JavaScript.",
+            'project_dho_desc': "SPA profesional para Dra. Hanoi Yánez, diseñada para presentar sus servicios médicos y facilitar la interacción con pacientes. Proyecta una estética limpia y moderna que transmite profesionalismo, con diseño responsivo. Incluye formulario de contacto para consultas y comunicación directa vía WhatsApp para citas. Construida con HTML5, CSS3 (Tailwind CSS) y JavaScript.", // Versión 4
             'project_dho_title_card': 'Dra. Hanoi Online',
             'project_dho_desc_card': 'Sitio web profesional para Dra. Hanoi, presentando servicios y facilitando citas.',
             'alt_dho_card_img': 'Captura de pantalla del sitio Dra. Hanoi Online',
             
             'project_artpf_title': 'Santiago Narváez - Portfolio de Arte Digital y Fotografía IA',
-            'project_artpf_desc': "Portafolio web personal y profesional para Santiago Narváez, exhibiendo su fotografía y creaciones visuales con asistencia de IA. El sitio presenta una estética que fusiona lo tradicional con lo vanguardista, ofreciendo una galería inmersiva. Dispone de una interfaz bilingüe (ES/EN), incluye elementos interactivos desarrollados con p5.js y un formulario de contacto para consultas o propuestas de colaboración. Construido con HTML, Tailwind CSS y JavaScript.",
+            'project_artpf_desc': "Portafolio web personal para Santiago Narváez, exhibiendo su fotografía y arte visual asistido por IA. Fusiona arte tradicional y tecnología moderna en una galería inmersiva. Ofrece interfaz bilingüe (ES/EN), elementos interactivos con p5.js y formulario de contacto para consultas. Construido con HTML, Tailwind CSS, JavaScript y p5.js.", // Versión 4
             'project_artpf_title_card': 'Portfolio Artístico IA',
             'project_artpf_desc_card': 'Exploración visual en la intersección de la imaginación y la inteligencia artificial.',
             'alt_artpf_card_img': 'Captura de pantalla del Portfolio Artístico de Santiago Narváez',
 
             'project_veridia_title': 'Sitio Web Veridia', 
             'project_veridia_desc_card': "SPA oficial para Veridia, presentando soluciones de automatización inteligente y diseño web moderno...",
-            'project_veridia_desc': "Aplicación de página única (SPA) oficial y profesional para Veridia, empresa de soluciones de automatización inteligente. El sitio web posee una estética moderna y pulcra, diseñado estratégicamente para presentar sus servicios, detallar su metodología y facilitar la captación de prospectos mediante un formulario de contacto optimizado. Incorpora un diseño responsivo, una interfaz bilingüe (ES/EN) intuitiva, carga dinámica de contenido y animaciones sutiles. Construido con HTML, Tailwind CSS y JavaScript.", 
+            'project_veridia_desc': "SPA oficial para Veridia, empresa de automatización inteligente. Con estética moderna y pulcra, presenta servicios, metodología y un formulario de contacto optimizado para prospectos. Incluye diseño responsivo, interfaz bilingüe (ES/EN), contenido dinámico y animaciones sutiles. Construido con HTML, Tailwind CSS y JavaScript.", // Versión 4
             'alt_veridia_card_img': 'Captura de pantalla de la página de inicio del proyecto Veridia, mostrando soluciones de automatización inteligente.',
             
             'project_view_details': 'Ver Detalles',
@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- FUNCIÓN PARA RENDERIZAR ICONOS DE TECNOLOGÍA ---
     function renderTechIcons(containerElement, technologiesString) {
         if (!containerElement || !technologiesString) return;
 
@@ -282,10 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (techIconsContainer && techsString) {
                 renderTechIcons(techIconsContainer, techsString);
             } else {
-                // === MENSAJE DE DEPURACIÓN ===
-                console.warn('Contenedor de iconos de tecnología en tarjeta o string de tecnologías no encontrado para:', card.querySelector('h3')?.textContent || 'Tarjeta sin título');
-                if (!techIconsContainer) console.warn('---> No se encontró .project-card-tech-icons');
-                if (!techsString) console.warn('---> No se encontró data-project-technologies');
+                console.warn('Contenedor de iconos de tecnología en tarjeta (.project-card-tech-icons) o string de tecnologías (data-project-technologies) no encontrado para la tarjeta:', card.querySelector('h3')?.textContent || 'Tarjeta sin título claro');
+                if (!techIconsContainer) console.warn('---> La tarjeta no tiene un div con la clase ".project-card-tech-icons"');
+                if (!techsString) console.warn('---> La tarjeta no tiene el atributo "data-project-technologies"');
             }
         });
     }
