@@ -44,27 +44,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'projects_title': 'My Projects',
             
             'project_ccc_title': 'Chill Chess Club',
-            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed to sell online chess courses (beginner-intermediate). It features a bilingual interface (ES/EN) and promotes an AI-assisted 'immersive and personalized' teaching method. Built with HTML5, CSS3, and JavaScript (ES6+).",
+            'project_ccc_desc': "A professional single-page application (SPA) with a 'chill' and modern aesthetic, designed for selling online chess courses. It features a bilingual (ES/EN) interface, promotes an AI-assisted immersive teaching method, and includes a form for inquiries and course registration. Built with HTML5, CSS3, and JavaScript (ES6+).",
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.',
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
             
             'project_dho_title': 'Dra. Hanoi Yánez González - Professional Website & SPA',
-            'project_dho_desc': "Development of a single-page application (SPA) for Dr. Hanoi Yánez, a Gynecologist-Obstetrician specializing in child and adolescent care. The project showcases her comprehensive services, holistic approach, and her role as the sole specialist in child-adolescent care on Margarita Island. The design is clean, modern, and aims to convey professionalism and warmth, facilitating interaction and appointment scheduling.",
+            'project_dho_desc': "A professional single-page application (SPA) for Dr. Hanoi Yánez, designed to present her medical services in detail and facilitate patient interaction. The website features a clean and modern aesthetic that conveys professionalism and warmth, with a fully responsive design. Key functionalities include an integrated contact form for inquiries and direct communication via WhatsApp for appointment scheduling. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.",
             'project_dho_title_card': 'Dra. Hanoi Online',
-            'project_dho_desc_card': 'Professional website for Gynecologist-Obstetrician with a holistic approach on Margarita Island.',
+            'project_dho_desc_card': 'Professional website for Dr. Hanoi, showcasing services and facilitating appointments.',
             'alt_dho_card_img': 'Dra. Hanoi Online Website Screenshot',
             
             'project_artpf_title': 'Santiago Narváez - Digital Art & AI Photography Portfolio',
-            // Descripción acortada para evitar scroll excesivo
-            'project_artpf_desc': "Developed a personal portfolio showcasing photography and visual creations at the frontier of AI-assisted art. The site blends traditional artistic sensibilities with cutting-edge technology, transforming moments into impactful visual experiences. It invites a journey through digital realms of dreamlike landscapes and surreal portraits, reflecting an evolving relationship with technology. Built with HTML, Tailwind CSS, JavaScript, and p5.js.",
+            'project_artpf_desc': "A professional personal web portfolio for Santiago Narváez, showcasing his photography and AI-assisted visual creations. The site features an aesthetic that blends traditional art with cutting-edge technology, offering an immersive gallery. It offers a bilingual (ES/EN) interface, includes interactive elements developed with p5.js, and a contact form for inquiries or collaboration proposals. Built with HTML, Tailwind CSS, JavaScript, and p5.js.",
             'project_artpf_title_card': 'AI Artistic Portfolio',
             'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
             'alt_artpf_card_img': 'Santiago Narváez Artistic Portfolio Screenshot',
 
             'project_veridia_title': 'Veridia Website', 
-            'project_veridia_desc_card': 'Intelligent automation solutions website project.', 
-            'project_veridia_desc': "Developed the official single-page application (SPA) for Veridia, a company specializing in intelligent automation solutions. The project involved creating a modern, professional website to showcase their services (IPA, RPA, AI Integration), detail their methodology, and facilitate client contact. Key features include a responsive design, bilingual capabilities (EN/ES), dynamic content loading, and subtle animations to enhance user experience. Built with HTML, Tailwind CSS, and JavaScript.", 
+            'project_veridia_desc_card': "Official SPA for Veridia, showcasing intelligent automation solutions and modern web design...",
+            'project_veridia_desc': "A professional official single-page application (SPA) for Veridia, an intelligent automation solutions company. The website has a modern and clean aesthetic, strategically designed to showcase its specialized services, detail its work methodology, and facilitate lead generation through an optimized contact form. It features a responsive design, an intuitive bilingual (ES/EN) interface, dynamic content loading, and subtle animations. Built with HTML, Tailwind CSS, and JavaScript.", 
             'alt_veridia_card_img': 'Screenshot of the Veridia project homepage, showcasing intelligent automation solutions.',
             
             'project_view_details': 'View Details',
@@ -97,27 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'projects_title': 'Mis Proyectos',
 
             'project_ccc_title': 'Chill Chess Club',
-            'project_ccc_desc': "Una aplicación de página única (SPA) profesional con estética 'chill' y moderna, diseñada para vender cursos de ajedrez online (principiante-intermedio). Presenta una interfaz bilingüe (ES/EN) y promueve un método de enseñanza 'inmersivo y personalizado' asistido por IA. Construida con HTML5, CSS3 y JavaScript (ES6+).",
+            'project_ccc_desc': "Una aplicación de página única (SPA) profesional con estética 'chill' y moderna, diseñada para la venta de cursos de ajedrez online. Presenta una interfaz bilingüe (ES/EN), promueve un método de enseñanza inmersivo asistido por IA y cuenta con un formulario para consultas e inscripción a los cursos. Construida con HTML5, CSS3 y JavaScript (ES6+).",
             'project_ccc_title_card': 'Chill Chess Club',
             'project_ccc_desc_card': 'SPA para cursos de ajedrez online con método personalizado asistido por IA.',
             'alt_ccc_card_img': 'Captura de pantalla de Chill Chess Club',
             
             'project_dho_title': 'Dra. Hanoi Yánez González - Sitio Web Profesional y SPA',
-            'project_dho_desc': "Desarrollo de un sitio web de página única (SPA) para la Dra. Hanoi Yánez, Ginecóloga-Obstetra con especialización infanto-juvenil. El proyecto presenta sus servicios integrales, un enfoque holístico y su rol como única especialista en atención infanto-juvenil en la Isla de Margarita. El diseño es limpio, moderno y busca transmitir profesionalismo y calidez, facilitando la interacción y el agendamiento de citas.",
+            'project_dho_desc': "Aplicación de página única (SPA) profesional para la Dra. Hanoi Yánez, diseñada para presentar detalladamente sus servicios médicos y facilitar la interacción con pacientes. El sitio web proyecta una estética limpia y moderna que transmite profesionalismo y calidez, con un diseño completamente responsivo. Entre sus funcionalidades destacan un formulario de contacto integrado para consultas y la opción de comunicación directa vía WhatsApp para agendar citas. Construido con HTML5, CSS3 (Tailwind CSS) y JavaScript.",
             'project_dho_title_card': 'Dra. Hanoi Online',
-            'project_dho_desc_card': 'Sitio web profesional para ginecóloga-obstetra con enfoque holístico en Isla de Margarita.',
+            'project_dho_desc_card': 'Sitio web profesional para Dra. Hanoi, presentando servicios y facilitando citas.',
             'alt_dho_card_img': 'Captura de pantalla del sitio Dra. Hanoi Online',
             
             'project_artpf_title': 'Santiago Narváez - Portfolio de Arte Digital y Fotografía IA',
-            // Descripción acortada para evitar scroll excesivo
-            'project_artpf_desc': "Desarrollo de un portafolio personal que muestra mi trabajo como fotógrafo y creador visual, explorando las fronteras de la creación asistida por IA. El sitio combina sensibilidades artísticas tradicionales con tecnología de vanguardia, transformando momentos en experiencias visuales impactantes. Invita a un viaje por reinos digitales de paisajes oníricos y retratos surrealistas, reflejando una relación evolutiva con la tecnología. Construido con HTML, Tailwind CSS, JavaScript y p5.js.",
+            'project_artpf_desc': "Portafolio web personal y profesional para Santiago Narváez, exhibiendo su fotografía y creaciones visuales con asistencia de IA. El sitio presenta una estética que fusiona lo tradicional con lo vanguardista, ofreciendo una galería inmersiva. Dispone de una interfaz bilingüe (ES/EN), incluye elementos interactivos desarrollados con p5.js y un formulario de contacto para consultas o propuestas de colaboración. Construido con HTML, Tailwind CSS y JavaScript.",
             'project_artpf_title_card': 'Portfolio Artístico IA',
             'project_artpf_desc_card': 'Exploración visual en la intersección de la imaginación y la inteligencia artificial.',
             'alt_artpf_card_img': 'Captura de pantalla del Portfolio Artístico de Santiago Narváez',
 
             'project_veridia_title': 'Sitio Web Veridia', 
-            'project_veridia_desc_card': 'Proyecto de sitio web para soluciones de automatización inteligente.', 
-            'project_veridia_desc': "Desarrollo de la aplicación de página única (SPA) oficial para Veridia, una empresa especializada en soluciones de automatización inteligente. El proyecto consistió en crear un sitio web moderno y profesional para presentar sus servicios (IPA, RPA, Integración IA), detallar su metodología y facilitar el contacto con clientes. Las características clave incluyen un diseño responsivo, capacidades bilingües (ES/EN), carga dinámica de contenido y animaciones sutiles para mejorar la experiencia del usuario. Construido con HTML, Tailwind CSS y JavaScript.", 
+            'project_veridia_desc_card': "SPA oficial para Veridia, presentando soluciones de automatización inteligente y diseño web moderno...",
+            'project_veridia_desc': "Aplicación de página única (SPA) oficial y profesional para Veridia, empresa de soluciones de automatización inteligente. El sitio web posee una estética moderna y pulcra, diseñado estratégicamente para presentar sus servicios, detallar su metodología y facilitar la captación de prospectos mediante un formulario de contacto optimizado. Incorpora un diseño responsivo, una interfaz bilingüe (ES/EN) intuitiva, carga dinámica de contenido y animaciones sutiles. Construido con HTML, Tailwind CSS y JavaScript.", 
             'alt_veridia_card_img': 'Captura de pantalla de la página de inicio del proyecto Veridia, mostrando soluciones de automatización inteligente.',
             
             'project_view_details': 'Ver Detalles',
@@ -132,6 +130,49 @@ document.addEventListener('DOMContentLoaded', () => {
             'footer_copyright': `© ${new Date().getFullYear()} elsantin. Todos los derechos reservados.`
         }
     };
+
+    function renderTechIcons(containerElement, technologiesString) {
+        if (!containerElement || !technologiesString) return;
+
+        containerElement.innerHTML = ''; 
+        const techs = technologiesString.split(',').map(tech => tech.trim().toLowerCase());
+        const addedTechs = new Set(); 
+
+        techs.forEach(tech => {
+            let iconHtml = '';
+            let techKey = ''; 
+
+            if (tech.includes('p5.js') || tech.includes('p5')) {
+                techKey = 'p5';
+                if (!addedTechs.has(techKey)) {
+                    iconHtml = '<img src="p5-logo.svg" alt="p5.js logo" title="p5.js" class="tech-icon-img">'; 
+                    addedTechs.add(techKey);
+                }
+            } else if (tech.includes('html')) {
+                techKey = 'html';
+                if (!addedTechs.has(techKey)) {
+                    iconHtml = '<i class="fab fa-html5" title="HTML5" style="color: #e34f26;"></i>';
+                    addedTechs.add(techKey);
+                }
+            } else if (tech.includes('css')) { 
+                techKey = 'css';
+                if (!addedTechs.has(techKey)) {
+                    iconHtml = '<i class="fab fa-css3-alt" title="CSS3" style="color: #1572b6;"></i>';
+                    addedTechs.add(techKey);
+                }
+            } else if (tech.includes('javascript') || tech.includes('js')) {
+                techKey = 'js';
+                if (!addedTechs.has('p5') && !addedTechs.has(techKey)) { 
+                    iconHtml = '<i class="fab fa-js-square" title="JavaScript" style="color: #f7df1e;"></i>';
+                    addedTechs.add(techKey);
+                }
+            }
+            
+            if (iconHtml) {
+                containerElement.insertAdjacentHTML('beforeend', iconHtml);
+            }
+        });
+    }
 
     function setLanguage(lang) {
         if (!translations[lang]) {
@@ -164,6 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('language', lang);
         currentLanguage = lang; 
         document.body.classList.add('language-set'); 
+
+        if (projectGrid) {
+            projectGrid.querySelectorAll('.project-card').forEach(card => {
+                const techIconsContainer = card.querySelector('.project-card-tech-icons');
+                const techsString = card.dataset.projectTechnologies;
+                if (techIconsContainer && techsString) {
+                    renderTechIcons(techIconsContainer, techsString);
+                }
+            });
+        }
     }
 
     if (languageSwitcherBtn) {
@@ -178,8 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    setLanguage(currentLanguage);
-
+    
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenuPanel = document.getElementById('mobile-menu-panel');
     const mobileMenuIcon = document.getElementById('mobile-menu-icon'); 
@@ -217,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectLiveUrl = document.getElementById('modal-project-live-url');
     const modalProjectRepoUrl = document.getElementById('modal-project-repo-url');
     const modalContentItem = modal.querySelector('.modal-content-item'); 
-    const modalTechIconsContainer = document.getElementById('modal-tech-icons-outside-image'); // ID del contenedor de iconos
+    const modalTechIconsContainer = document.getElementById('modal-tech-icons-outside-image'); 
 
     const modalPrevProjectBtn = document.getElementById('modal-prev-project');
     const modalNextProjectBtn = document.getElementById('modal-next-project');
@@ -226,7 +276,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectGrid) {
         allProjectCards = Array.from(projectGrid.querySelectorAll('.project-card'));
+        allProjectCards.forEach(card => {
+            const techIconsContainer = card.querySelector('.project-card-tech-icons');
+            const techsString = card.dataset.projectTechnologies;
+            if (techIconsContainer && techsString) {
+                renderTechIcons(techIconsContainer, techsString);
+            } else {
+                // === MENSAJE DE DEPURACIÓN ===
+                console.warn('Contenedor de iconos de tecnología en tarjeta o string de tecnologías no encontrado para:', card.querySelector('h3')?.textContent || 'Tarjeta sin título');
+                if (!techIconsContainer) console.warn('---> No se encontró .project-card-tech-icons');
+                if (!techsString) console.warn('---> No se encontró data-project-technologies');
+            }
+        });
     }
+    
+    setLanguage(currentLanguage);
 
     function animateAndUpdateModalContent(projectCard, direction = 'none') {
         if (!projectCard || !modalContentItem) return;
@@ -289,26 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalProjectTechnologies) modalProjectTechnologies.textContent = technologiesString; 
         if (modalProjectDescription) modalProjectDescription.textContent = description;
         
-        if (modalTechIconsContainer) { 
-            modalTechIconsContainer.innerHTML = ''; 
-            const techs = technologiesString.split(',').map(tech => tech.trim().toLowerCase());
-            
-            techs.forEach(tech => {
-                let iconHtml = '';
-                if (tech.includes('html')) {
-                    iconHtml = '<i class="fab fa-html5" title="HTML5" style="color: #e34f26;"></i>';
-                } else if (tech.includes('css')) {
-                    iconHtml = '<i class="fab fa-css3-alt" title="CSS3" style="color: #1572b6;"></i>';
-                } else if (tech.includes('javascript') || tech.includes('js')) {
-                    iconHtml = '<i class="fab fa-js-square" title="JavaScript" style="color: #f7df1e;"></i>';
-                } else if (tech.includes('p5.js') || tech.includes('p5')) {
-                    iconHtml = '<span title="p5.js" class="font-bold" style="color: #ed225d;">P5</span>'; 
-                }
-                
-                if (iconHtml) {
-                    modalTechIconsContainer.insertAdjacentHTML('beforeend', iconHtml);
-                }
-            });
+        if (modalTechIconsContainer && technologiesString) {
+            renderTechIcons(modalTechIconsContainer, technologiesString);
         }
 
         if (modalProjectLiveUrl) {

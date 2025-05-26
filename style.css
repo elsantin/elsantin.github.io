@@ -129,25 +129,56 @@ footer.footer { position: relative; z-index: 1; flex-shrink: 0; }
 
 /* === CONTENEDOR PARA LA DESCRIPCIÓN === */
 #modal-project-description-container { 
-    /* Se elimina overflow-y: auto; y max-height para que el contenido se expanda */
     margin-bottom: 1rem; 
+    /* Se eliminó max-height y overflow-y: auto */
 }
-/* Ya no necesitamos estilos para la barra de scroll aquí */
 
+/* === ICONOS DE TECNOLOGÍA (Aplicable a Tarjetas y Modal) === */
+.project-card-tech-icons, 
+#modal-tech-icons-outside-image { 
+    /* El contenedor usa clases de Tailwind para flex, justify-end, items-center, space-x */
+}
 
-/* === ICONOS DE TECNOLOGÍA DEBAJO DE LA IMAGEN DEL MODAL === */
+.project-card-tech-icons i,
+.project-card-tech-icons img.tech-icon-img,
 #modal-tech-icons-outside-image i, 
-#modal-tech-icons-outside-image span { 
-    font-size: 1.1rem; 
-    opacity: 0.85; 
+#modal-tech-icons-outside-image img.tech-icon-img { 
+    opacity: 0.9; 
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    margin: 0 0.15rem; 
+    margin: 0 0.1rem; /* Reducido para las tarjetas */
+    display: inline-block; 
+    vertical-align: middle; 
 }
+
+/* Tamaño para iconos en las TARJETAS */
+.project-card-tech-icons i {
+    font-size: 0.9rem; 
+    line-height: 1;    
+}
+.project-card-tech-icons img.tech-icon-img {
+    height: 0.9rem;    
+    width: auto;       
+}
+
+/* Tamaño para iconos en el MODAL */
+#modal-tech-icons-outside-image i {
+    font-size: 1.1rem; 
+    line-height: 1;    
+}
+#modal-tech-icons-outside-image img.tech-icon-img {
+    height: 1.1rem; /* Altura para el SVG en el modal */   
+    width: auto;       
+}
+
+.project-card-tech-icons i:hover,
+.project-card-tech-icons img.tech-icon-img:hover,
 #modal-tech-icons-outside-image i:hover,
-#modal-tech-icons-outside-image span:hover {
+#modal-tech-icons-outside-image img.tech-icon-img:hover {
     opacity: 1;
     transform: scale(1.1); 
 }
+/* Los colores específicos para los iconos Font Awesome se aplican con style="" en el JS */
+/* El color del logo p5.svg es intrínseco al archivo SVG, o se puede intentar con fill si el SVG es simple */
 
 
 .project-card::before,
@@ -164,22 +195,7 @@ footer.footer { position: relative; z-index: 1; flex-shrink: 0; }
     transform: translateY(-6px); border-color: #A37E4F; 
     box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.35), 0 0 25px rgba(var(--color-primary-rgb), 0.2), 0 10px 20px rgba(0,0,0,0.25), 0 3px 8px rgba(0,0,0,0.2);   
 }
-.project-card img { transition: transform 0.35s ease-in-out; }
-/* === CAMBIO: object-fit para la imagen de la tarjeta del proyecto === */
-.project-card img.object-cover { /* Mantener object-cover para las tarjetas si se prefiere */
-    /* No es necesario cambiar nada aquí si ya está object-cover en el HTML */
-}
-
-
-/* === CAMBIO: object-fit para la imagen del modal === */
-/* Esto se aplica directamente en el HTML con la clase 'object-contain' */
-/* Si quieres forzarlo desde CSS para todas las imágenes del modal: */
-/*
-#modal-project-image {
-    object-fit: contain !important; 
-    background-color: rgba(0,0,0,0.2); /* Fondo para el letterboxing si es necesario */
-/* }
-*/
+/* La clase object-cover/object-contain para las imágenes se maneja en el HTML */
 
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Rajdhani', sans-serif; }
