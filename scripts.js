@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'project_ccc_desc_card': 'SPA for online chess courses with an AI-assisted, personalized method.',
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
             
-            'project_dho_title': 'Dra. Hanoi Yánez González - Professional Website & SPA',
+            'project_dho_title': 'Dra. Hanoi Online',
             'project_dho_desc': "Professional SPA for Dr. Hanoi Yánez, designed to present medical services and facilitate patient interaction. Features a clean, modern aesthetic conveying professionalism, with a responsive design. Includes a contact form for inquiries and direct WhatsApp communication for appointments. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.", // Versión 4
             'project_dho_title_card': 'Dra. Hanoi Online',
             'project_dho_desc_card': 'Professional website for Dr. Hanoi, showcasing services and facilitating appointments.',
             'alt_dho_card_img': 'Dra. Hanoi Online Website Screenshot',
             
-            'project_artpf_title': 'Santiago Narváez - Digital Art & AI Photography Portfolio',
+            'project_artpf_title': 'Santiago Narvaez AI Artistic Portfolio',
             'project_artpf_desc': "Personal web portfolio for Santiago Narváez, showcasing photography and AI-assisted visual art. Blends traditional art with modern tech in an immersive gallery. Features a bilingual (ES/EN) interface, interactive p5.js elements, and a contact form for inquiries. Built with HTML, Tailwind CSS, JavaScript, and p5.js.", // Versión 4
             'project_artpf_title_card': 'AI Artistic Portfolio',
             'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
