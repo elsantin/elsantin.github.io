@@ -50,20 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
             'alt_ccc_card_img': 'Chill Chess Club Screenshot',
             
             'project_dho_title': 'Dra. Hanoi Online', 
-            'project_dho_desc': "A professional single-page application (SPA) for Dr. Hanoi Yánez, designed to present her medical services in detail and facilitate patient interaction. The website features a clean and modern aesthetic that conveys professionalism and warmth, with a fully responsive design. Key functionalities include an integrated contact form for inquiries and direct communication via WhatsApp for appointment scheduling. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.",
+            'project_dho_desc': "Professional SPA for Dr. Hanoi Yánez, presenting medical services and facilitating patient interaction. Features a clean, modern aesthetic with responsive design. Includes a contact form and direct WhatsApp for appointments. Built with HTML5, CSS3 (Tailwind CSS), and JavaScript.", // VERSIÓN 5 SÚPER CONCISA
             'project_dho_title_card': 'Dra. Hanoi Online', 
             'project_dho_desc_card': 'Professional website for Dr. Hanoi, showcasing services and facilitating appointments.',
             'alt_dho_card_img': 'Dra. Hanoi Online Website Screenshot',
             
             'project_artpf_title': 'Santiago Narváez: AI Art Portfolio', 
-            'project_artpf_desc': "A professional personal web portfolio for Santiago Narváez, showcasing his photography and AI-assisted visual creations. The site features an aesthetic that blends traditional art with cutting-edge technology, offering an immersive gallery. It offers a bilingual (ES/EN) interface, includes interactive elements developed with p5.js, and a contact form for inquiries or collaboration proposals. Built with HTML, Tailwind CSS, JavaScript, and p5.js.",
-            'project_artpf_title_card': 'Santiago Narváez: AI Art Portfolio', // TÍTULO DE TARJETA ACTUALIZADO
+            'project_artpf_desc': "A professional personal web portfolio for Santiago Narváez, showcasing his photography and AI-assisted visual creations. The site features an aesthetic that blends traditional art with cutting-edge technology, offering an immersive gallery. It offers a bilingual (ES/EN) interface, includes interactive elements developed with p5.js, and a contact form for inquiries or collaboration proposals. Built with HTML, Tailwind CSS, JavaScript, and p5.js.", // Esta es la Versión 4, que ya era concisa
+            'project_artpf_title_card': 'Santiago Narváez: AI Art Portfolio', 
             'project_artpf_desc_card': 'Visual exploration at the intersection of imagination and artificial intelligence.',
             'alt_artpf_card_img': 'Santiago Narváez Artistic Portfolio Screenshot',
 
             'project_veridia_title': 'Veridia Website', 
             'project_veridia_desc_card': "Official SPA for Veridia, showcasing intelligent automation solutions and modern web design...",
-            'project_veridia_desc': "A professional official single-page application (SPA) for Veridia, an intelligent automation solutions company. The website has a modern and clean aesthetic, strategically designed to showcase its specialized services, detail its work methodology, and facilitate lead generation through an optimized contact form. It features a responsive design, an intuitive bilingual (ES/EN) interface, dynamic content loading, and subtle animations. Built with HTML, Tailwind CSS, and JavaScript.", 
+            'project_veridia_desc': "Official SPA for Veridia (intelligent automation). Features a modern, clean aesthetic for showcasing services, methodology, and a lead-gen contact form. Includes responsive design, bilingual (ES/EN) interface, dynamic content, and animations. Built with HTML, Tailwind CSS, and JavaScript.", // VERSIÓN 5 SÚPER CONCISA
             'alt_veridia_card_img': 'Screenshot of the Veridia project homepage, showcasing intelligent automation solutions.',
             
             'project_view_details': 'View Details',
@@ -102,20 +102,20 @@ document.addEventListener('DOMContentLoaded', () => {
             'alt_ccc_card_img': 'Captura de pantalla de Chill Chess Club',
             
             'project_dho_title': 'Dra. Hanoi Online', 
-            'project_dho_desc': "Aplicación de página única (SPA) profesional para la Dra. Hanoi Yánez, diseñada para presentar detalladamente sus servicios médicos y facilitar la interacción con pacientes. El sitio web proyecta una estética limpia y moderna que transmite profesionalismo y calidez, con un diseño completamente responsivo. Entre sus funcionalidades destacan un formulario de contacto integrado para consultas y la opción de comunicación directa vía WhatsApp para agendar citas. Construido con HTML5, CSS3 (Tailwind CSS) y JavaScript.",
+            'project_dho_desc': "SPA profesional para Dra. Hanoi Yánez, presentando sus servicios médicos y facilitando la interacción. Con estética limpia, moderna y diseño responsivo, incluye formulario de contacto y comunicación vía WhatsApp para citas. Realizado con HTML5, CSS3 (Tailwind CSS) y JavaScript.", // VERSIÓN 5 SÚPER CONCISA
             'project_dho_title_card': 'Dra. Hanoi Online', 
             'project_dho_desc_card': 'Sitio web profesional para Dra. Hanoi, presentando servicios y facilitando citas.',
             'alt_dho_card_img': 'Captura de pantalla del sitio Dra. Hanoi Online',
             
             'project_artpf_title': 'Santiago Narváez: Portfolio Arte IA', 
-            'project_artpf_desc': "Portafolio web personal y profesional para Santiago Narváez, exhibiendo su fotografía y arte visual asistido por IA. Fusiona arte tradicional y tecnología moderna en una galería inmersiva. Ofrece interfaz bilingüe (ES/EN), elementos interactivos con p5.js y formulario de contacto para consultas. Construido con HTML, Tailwind CSS, JavaScript y p5.js.",
-            'project_artpf_title_card': 'Santiago Narváez: Portfolio Arte IA', // TÍTULO DE TARJETA ACTUALIZADO
+            'project_artpf_desc': "Portafolio web personal y profesional para Santiago Narváez, exhibiendo su fotografía y arte visual asistido por IA. Fusiona arte tradicional y tecnología moderna en una galería inmersiva. Ofrece interfaz bilingüe (ES/EN), elementos interactivos con p5.js y formulario de contacto para consultas. Construido con HTML, Tailwind CSS, JavaScript y p5.js.", // Esta es la Versión 4, que ya era concisa
+            'project_artpf_title_card': 'Santiago Narváez: Portfolio Arte IA', 
             'project_artpf_desc_card': 'Exploración visual en la intersección de la imaginación y la inteligencia artificial.',
             'alt_artpf_card_img': 'Captura de pantalla del Portfolio Artístico de Santiago Narváez',
 
             'project_veridia_title': 'Sitio Web Veridia', 
             'project_veridia_desc_card': "SPA oficial para Veridia, presentando soluciones de automatización inteligente y diseño web moderno...",
-            'project_veridia_desc': "Aplicación de página única (SPA) oficial y profesional para Veridia, empresa de soluciones de automatización inteligente. El sitio web posee una estética moderna y pulcra, diseñado estratégicamente para presentar sus servicios, detallar su metodología y facilitar la captación de prospectos mediante un formulario de contacto optimizado. Incorpora un diseño responsivo, una interfaz bilingüe (ES/EN) intuitiva, carga dinámica de contenido y animaciones sutiles. Construido con HTML, Tailwind CSS y JavaScript.", 
+            'project_veridia_desc': "SPA oficial para Veridia (automatización inteligente). Con estética moderna y pulcra, presenta servicios, metodología y un formulario de contacto optimizado. Incluye diseño responsivo, interfaz bilingüe (ES/EN), contenido dinámico y animaciones. Realizado con HTML, Tailwind CSS y JavaScript.", // VERSIÓN 5 SÚPER CONCISA
             'alt_veridia_card_img': 'Captura de pantalla de la página de inicio del proyecto Veridia, mostrando soluciones de automatización inteligente.',
             
             'project_view_details': 'Ver Detalles',
