@@ -1,5 +1,13 @@
 /* questionnaire.css - Estilo "elsantin Dev Hub" */
 
+/* COMENTARIO ESTRATÉGICO: Aplicar box-sizing universalmente para un mejor control del layout */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 :root {
     --font-body: 'Exo 2', sans-serif;
     --font-heading: 'Rajdhani', sans-serif;
@@ -13,9 +21,8 @@
     --color-accent-gold-hover: #b8915e;
     --color-input-bg: rgba(13, 17, 23, 0.75);
     --color-text-on-gold: #161b22;
-    --color-success: #28a745; /* Verde para éxito */
-    --color-error: #dc3545;   /* Rojo para error */
-
+    --color-success: #28a745; 
+    --color-error: #dc3545;   
 
     --base-spacing-unit: 0.5rem; 
     --header-height: 65px; 
@@ -40,7 +47,10 @@ body {
     align-items: center;
     min-height: 100vh; 
     -webkit-font-smoothing: antialiased; 
-    -moz-osx-font-smoothing: grayscale; 
+    -moz-osx-font-smoothing: grayscale;
+    /* COMENTARIO ESTRATÉGICO: Evitar scroll horizontal en el body como medida de seguridad.
+       Lo ideal es que los elementos internos no causen overflow. */
+    overflow-x: hidden; 
 }
 
 [data-lang-key] { visibility: hidden; }
@@ -77,6 +87,7 @@ body.language-set [data-lang-key] { visibility: visible; }
     color: var(--color-accent-gold);
     text-decoration: none;
     transition: opacity 0.2s ease;
+    white-space: nowrap; /* Evitar que el logo se rompa en dos líneas */
 }
 .questionnaire-logo:hover {
     opacity: 0.8;
@@ -94,6 +105,7 @@ body.language-set [data-lang-key] { visibility: visible; }
     cursor: pointer;
     transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
     box-shadow: 0 0 5px rgba(163, 126, 79, 0.3), 0 0 10px rgba(163, 126, 79, 0.2); 
+    white-space: nowrap; /* Evitar que el texto del botón se rompa */
 }
 
 #language-switcher:hover {
@@ -176,7 +188,7 @@ textarea {
     background-color: var(--color-input-bg);
     border: 1px solid var(--color-dev-hub-border);
     border-radius: 6px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; Ya está globalmente */
     font-size: 1em; 
     font-family: var(--font-body);
     color: var(--color-dev-hub-text-primary);
@@ -287,7 +299,6 @@ textarea {
     background-color: var(--color-accent-gold);
 }
 
-/* COMENTARIO ESTRATÉGICO: Estilos para los mensajes de confirmación/error del formulario */
 .form-confirmation-message {
     margin-top: calc(var(--base-spacing-unit) * 2.5);
     padding: calc(var(--base-spacing-unit) * 2);
@@ -297,12 +308,12 @@ textarea {
     line-height: 1.5;
 }
 .form-confirmation-message.success {
-    background-color: rgba(40, 167, 69, 0.15); /* Fondo verde claro translúcido */
+    background-color: rgba(40, 167, 69, 0.15); 
     color: var(--color-success);
     border: 1px solid rgba(40, 167, 69, 0.3);
 }
 .form-confirmation-message.error {
-    background-color: rgba(220, 53, 69, 0.1); /* Fondo rojo claro translúcido */
+    background-color: rgba(220, 53, 69, 0.1); 
     color: var(--color-error);
     border: 1px solid rgba(220, 53, 69, 0.25);
 }
@@ -312,7 +323,6 @@ textarea {
     opacity: 0.8;
     margin-top: calc(var(--base-spacing-unit) * 0.5);
 }
-
 
 .cierre-cuestionario {
     text-align: center; 
@@ -380,23 +390,25 @@ footer {
         padding-left: var(--base-spacing-unit); 
         padding-right: var(--base-spacing-unit); 
         padding-bottom: var(--base-spacing-unit);
+        /* El padding-top del body ya considera la altura del header */
     }
     .questionnaire-header {
-        padding: 0 var(--base-spacing-unit);
+        padding: 0 var(--base-spacing-unit); /* Padding reducido para el header en móvil */
         --header-height: 60px; 
     }
     .questionnaire-logo {
-        font-size: 1.6em;
+        /* COMENTARIO ESTRATÉGICO: Reducir tamaño de logo en móvil */
+        font-size: 1.5em; 
     }
     #language-switcher {
-        font-size: 0.85em; 
-        padding: calc(var(--base-spacing-unit) * 0.8) calc(var(--base-spacing-unit) * 1.5);
+        /* COMENTARIO ESTRATÉGICO: Reducir padding y tamaño de fuente del botón de idioma en móvil */
+        font-size: 0.8em; 
+        padding: calc(var(--base-spacing-unit) * 0.7) calc(var(--base-spacing-unit) * 1); /* Padding horizontal reducido */
     }
     .container {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: calc(var(--base-spacing-unit) * 2.5);
-        padding: calc(var(--base-spacing-unit) * 3) calc(var(--base-spacing-unit) * 2.5);
+        /* COMENTARIO ESTRATÉGICO: Corregida la sintaxis de 'margin' y ajustados los paddings del container */
+        margin: calc(var(--base-spacing-unit) * 2.5) auto; 
+        padding: calc(var(--base-spacing-unit) * 3) calc(var(--base-spacing-unit) * 2); /* Padding horizontal del container reducido */
     }
     .form-title-header h1 { font-size: 1.9em; }
     .form-title-header p { font-size: 0.95em; }
