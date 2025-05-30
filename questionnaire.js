@@ -1,18 +1,16 @@
-// COMENTARIO ESTRATÉGICO: Script para el cuestionario, con header fijo y flecha back-to-top.
+// COMENTARIO ESTRATÉGICO: Script para el cuestionario, con envío AJAX y mensajes en página.
 document.addEventListener('DOMContentLoaded', function() {
     
-    // --- 1. ACTUALIZAR EL AÑO EN EL FOOTER ---
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // --- 2. FUNCIONALIDAD DE CAMBIO DE IDIOMA ---
     const languageSwitcherBtn = document.getElementById('language-switcher');
     let currentLanguage = localStorage.getItem('q_language') || 'es'; 
     const formLanguageHiddenInput = document.getElementById('form_language_hidden');
 
-    // COMENTARIO ESTRATÉGICO: Traducciones actualizadas. Se eliminaron q_closing_1 y q_closing_2, y se añadió q_closing_text.
+    // COMENTARIO ESTRATÉGICO: Añadidas traducciones para mensajes de envío.
     const translations = {
         'es': {
             'q_site_title': 'Cuestionario de Proyecto Web - por elsantin',
@@ -24,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'q_lang_switcher_text': 'ENG',
 
             'q_fs1_legend': 'Empecemos por ti y tu práctica',
+            'q_fs1_f_email_label': 'Tu Dirección de Email:',
+            'q_fs1_f_email_placeholder': 'Ej: tuemail@dominio.com',
             'q_fs1_f1_label': 'Especialidad Principal:',
             'q_fs1_f1_placeholder': 'Ej: Cardiología, Diseño Gráfico',
             'q_fs1_f2_label': 'Tus Servicios Estrella (hasta 3, en orden de importancia, que SÍ o SÍ deben destacarse):',
@@ -76,7 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'q_fs4_func_q4': 'Botón para llamar por WhatsApp o teléfono:',
 
             'q_submit_button': 'Enviar Mis Respuestas',
-            'q_closing_text': 'Agradezco mucho que te tomaras el tiempo para compartir tus ideas; esta información es realmente valiosa. Revisaré tus respuestas con atención y te contactaré pronto para que conversemos sobre los próximos pasos.', // Texto de cierre combinado
+            'q_form_submitting': 'Enviando tus respuestas...',
+            'q_form_success': '¡Gracias! Tus respuestas han sido enviadas con éxito. Me pondré en contacto contigo pronto.',
+            'q_form_error': 'Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo o contáctame directamente.',
+            'q_closing_text': 'Agradezco mucho que te tomaras el tiempo para compartir tus ideas; esta información es realmente valiosa. Revisaré tus respuestas con atención y te contactaré pronto para que conversemos sobre los próximos pasos.',
             'q_closing_signature': 'Un saludo,<br>elsantin',
             'q_footer_text': '© <span id="currentYearPlaceholder"></span> elsantin',
             'q_btt_label_aria': 'Volver arriba'
@@ -91,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'q_lang_switcher_text': 'ESP',
 
             'q_fs1_legend': 'Let\'s start with you and your practice',
+            'q_fs1_f_email_label': 'Your Email Address:',
+            'q_fs1_f_email_placeholder': 'E.g., youremail@domain.com',
             'q_fs1_f1_label': 'Main Specialty:',
             'q_fs1_f1_placeholder': 'E.g., Cardiology, Graphic Design',
             'q_fs1_f2_label': 'Your Star Services (up to 3, in order of importance, that MUST be highlighted):',
@@ -143,7 +148,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'q_fs4_func_q4': 'Button to call via WhatsApp or phone:',
 
             'q_submit_button': 'Send My Answers',
-            'q_closing_text': 'I greatly appreciate you taking the time to share your ideas; this information is truly valuable. I will review your answers carefully and contact you soon to discuss the next steps.', // Combined closing text
+            'q_form_submitting': 'Sending your answers...',
+            'q_form_success': 'Thank you! Your answers have been sent successfully. I will contact you soon.',
+            'q_form_error': 'There was an error sending the form. Please try again or contact me directly.',
+            'q_closing_text': 'I greatly appreciate you taking the time to share your ideas; this information is truly valuable. I will review your answers carefully and contact you soon to discuss the next steps.',
             'q_closing_signature': 'Best regards,<br>elsantin',
             'q_footer_text': '© <span id="currentYearPlaceholder"></span> elsantin',
             'q_btt_label_aria': 'Back to top'
@@ -166,10 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     translationText = translationText.replace('<span id="currentYearPlaceholder"></span>', yearSpan.outerHTML);
                 }
                 
-                if (element.tagName === 'INPUT' && element.type === 'text' && key.includes('_placeholder')) {
+                if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && key.includes('_placeholder')) {
                     element.placeholder = translationText;
-                } else if (element.tagName === 'TEXTAREA' && key.includes('_placeholder')) {
-                     element.placeholder = translationText;
                 } else if (element.tagName === 'TITLE') {
                     element.textContent = translationText;
                 } else if (element.hasAttribute('aria-label') && key.includes('_label_aria')) { 
@@ -194,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             languageSwitcherBtn.textContent = translations[lang]['q_lang_switcher_text'];
         }
         if (formLanguageHiddenInput) {
-            formLanguageHiddenInput.value = lang;
+            formLanguageHiddenInput.value = lang; 
         }
         localStorage.setItem('q_language', lang);
         currentLanguage = lang;
@@ -210,14 +216,62 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setLanguage(currentLanguage);
 
-
+    // --- FORMULARIO AJAX ---
     const clientForm = document.getElementById('clientForm');
+    const formConfirmationDiv = document.getElementById('formConfirmation');
+    const submitButton = clientForm.querySelector('button[type="submit"]');
 
-    if (clientForm) {
-        clientForm.addEventListener('submit', function(event) {
-            console.log('Form trying to submit via HTML action...');
+    if (clientForm && submitButton) {
+        clientForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evitar el envío tradicional
+
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = translations[currentLanguage]['q_form_submitting'] || 'Enviando...';
+            submitButton.disabled = true;
+            formConfirmationDiv.style.display = 'none'; // Ocultar mensajes previos
+
+            const formData = new FormData(clientForm);
+            const formAction = clientForm.action;
+
+            try {
+                const response = await fetch(formAction, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { // FormSubmit a veces requiere esto para AJAX
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // FormSubmit suele devolver un 200 OK incluso si hay un "error" de su lado (ej. email no confirmado)
+                    // pero para el usuario, si la petición fue "ok", asumimos que llegó al servidor.
+                    // La confirmación real del email es un paso aparte que debes hacer con FormSubmit.
+                    formConfirmationDiv.innerHTML = translations[currentLanguage]['q_form_success'];
+                    formConfirmationDiv.className = 'form-confirmation-message success'; // Para estilizar éxito
+                    clientForm.reset(); // Limpiar el formulario
+                } else {
+                    // Si FormSubmit devuelve un error (ej. 4xx, 5xx)
+                    const errorData = await response.json().catch(() => null); // Intenta parsear error JSON
+                    console.error('FormSubmit error response:', response.status, errorData);
+                    formConfirmationDiv.innerHTML = translations[currentLanguage]['q_form_error'];
+                    if (errorData && errorData.error) {
+                         formConfirmationDiv.innerHTML += `<br><small>${errorData.error}</small>`;
+                    }
+                    formConfirmationDiv.className = 'form-confirmation-message error'; // Para estilizar error
+                }
+            } catch (error) {
+                // Error de red o similar
+                console.error('Fetch error:', error);
+                formConfirmationDiv.innerHTML = translations[currentLanguage]['q_form_error'];
+                formConfirmationDiv.className = 'form-confirmation-message error';
+            } finally {
+                submitButton.innerHTML = originalButtonText; // Restaurar texto del botón
+                submitButton.disabled = false;
+                formConfirmationDiv.style.display = 'block'; // Mostrar mensaje
+            }
         });
     }
+
 
     if (yearSpan) {
         const yearTextElement = document.querySelector('[data-lang-key="q_footer_text"] #currentYear');

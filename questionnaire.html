@@ -30,11 +30,19 @@
             <p data-lang-key="q_intro_2">Tus ideas y visión son la base para crear algo que realmente funcione para ti.</p>
         </header>
 
-        <form id="clientForm" action="TU_ENDPOINT_DE_FORMSPREE_AQUI" method="POST">
+        <!-- COMENTARIO ESTRATÉGICO: Formulario configurado para FormSubmit.co. 
+             Reemplaza TU_EMAIL_AQUI con tu dirección de email real. -->
+        <form id="clientForm" action="https://formsubmit.co/santiago.narvaez.84@gmail.com" method="POST">
 
             <fieldset>
                 <legend data-lang-key="q_fs1_legend">Empecemos por ti y tu práctica</legend>
                 
+                <div>
+                    <label for="clientEmail" data-lang-key="q_fs1_f_email_label">Tu Dirección de Email:</label>
+                    <input type="email" id="clientEmail" name="email" 
+                           data-lang-key="q_fs1_f_email_placeholder" placeholder="Ej: tuemail@dominio.com" required>
+                </div>
+
                 <div>
                     <label for="especialidadPrincipal" data-lang-key="q_fs1_f1_label">Especialidad Principal:</label>
                     <input type="text" id="especialidadPrincipal" name="especialidadPrincipal" 
@@ -198,8 +206,12 @@
                     </div>
                 </div>
             </fieldset>
-            <input type="hidden" name="_subject" value="Nuevo Envío de Cuestionario de Descubrimiento Web">
-            <input type="hidden" name="_language" value="es" id="form_language_hidden">
+
+            <input type="hidden" name="_subject" value="Nuevo Contacto Web: Cuestionario elsantin Dev Hub">
+            <input type="hidden" name="_captcha" value="false">
+
+            <input type="hidden" name="form_current_language" value="es" id="form_language_hidden">
+            
             <button type="submit" class="submit-button" data-lang-key="q_submit_button">Enviar Mis Respuestas</button>
         </form>
 
@@ -208,7 +220,7 @@
             <p data-lang-key="q_closing_signature">Un saludo,<br>elsantin</p>
         </div>
 
-        <div id="formConfirmation" style="margin-top:1.25rem; padding:1rem; border-radius:6px; text-align:center; display:none;">
+        <div id="formConfirmation" class="form-confirmation-message" style="margin-top:1.25rem; padding:1rem; border-radius:6px; text-align:center; display:none;">
             </div>
         
         <footer>
@@ -217,7 +229,8 @@
     </div>
 
     <a href="#" id="back-to-top-btn" class="back-to-top-button" aria-label="Volver arriba" data-lang-key="q_btt_label_aria" title="Volver arriba">
-        <i class="fas fa-chevron-up"></i> </a>
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
     <script src="questionnaire.js"></script>
 </body>
